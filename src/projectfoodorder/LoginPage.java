@@ -13,15 +13,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-interface method{
-    void koneksi();
-}
-
 /**
  *
  * @author ACER
  */
-public class LoginPage extends javax.swing.JFrame implements method {
+public class LoginPage extends javax.swing.JFrame{
     
     public Connection connect;
     public Statement stm;
@@ -29,7 +25,6 @@ public class LoginPage extends javax.swing.JFrame implements method {
     String user = "root";
     String pass = "";
     
-    @Override
     public void koneksi(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");

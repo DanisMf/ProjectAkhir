@@ -14,13 +14,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-
+interface method{
+    void koneksi();
+}
 
 /**
  *
  * @author ACER
  */
-public class RegisterPage extends javax.swing.JFrame{
+public class RegisterPage extends javax.swing.JFrame implements method{
 
     /**
      * Creates new form LoginPage
@@ -38,6 +40,7 @@ public class RegisterPage extends javax.swing.JFrame{
     /**
      * Ovveride method yang ada di interface method
      */
+    @Override
     public void koneksi(){
         String url = "jdbc:mysql://localhost/projectfoodorder";
         String user = "root";
