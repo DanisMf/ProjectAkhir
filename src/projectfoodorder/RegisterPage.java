@@ -50,7 +50,7 @@ public class RegisterPage extends javax.swing.JFrame implements method{
             Class.forName("com.mysql.cj.jdbc.Driver");
             connect = DriverManager.getConnection(url, user,pass);
             stm = connect.createStatement();
-            JOptionPane.showMessageDialog(null, "Koneksi Berhasil");
+//            JOptionPane.showMessageDialog(null, "Koneksi Berhasil");
         }catch(ClassNotFoundException | SQLException e){
             JOptionPane.showMessageDialog(null, "Koneksi Gagal");
         }
@@ -84,34 +84,27 @@ public class RegisterPage extends javax.swing.JFrame implements method{
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(47, 72, 88));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 3, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("REGISTER YOUR ACCOUNT");
         jLabel1.setToolTipText("");
 
-        jLabel2.setFont(new java.awt.Font("Sitka Small", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Name ");
 
-        jLabel3.setFont(new java.awt.Font("Sitka Small", 1, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Username");
 
-        jUsername.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jUsernameActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setFont(new java.awt.Font("Sitka Small", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Phone Number");
 
-        jPhoneNumber.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPhoneNumberActionPerformed(evt);
-            }
-        });
-
-        jLabel7.setFont(new java.awt.Font("Sitka Small", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Password");
 
         jPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -141,10 +134,11 @@ public class RegisterPage extends javax.swing.JFrame implements method{
         });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("WELCOME");
         jLabel6.setToolTipText("");
 
-        jPanel6.setBackground(new java.awt.Color(195, 47, 39));
+        jPanel6.setBackground(new java.awt.Color(242, 100, 25));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -154,10 +148,10 @@ public class RegisterPage extends javax.swing.JFrame implements method{
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 13, Short.MAX_VALUE)
+            .addGap(0, 17, Short.MAX_VALUE)
         );
 
-        jPanel7.setBackground(new java.awt.Color(216, 87, 42));
+        jPanel7.setBackground(new java.awt.Color(246, 174, 45));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -170,7 +164,7 @@ public class RegisterPage extends javax.swing.JFrame implements method{
             .addGap(0, 21, Short.MAX_VALUE)
         );
 
-        jPanel8.setBackground(new java.awt.Color(219, 124, 38));
+        jPanel8.setBackground(new java.awt.Color(134, 187, 216));
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -183,7 +177,7 @@ public class RegisterPage extends javax.swing.JFrame implements method{
             .addGap(0, 15, Short.MAX_VALUE)
         );
 
-        jPanel9.setBackground(new java.awt.Color(247, 181, 56));
+        jPanel9.setBackground(new java.awt.Color(51, 101, 138));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -260,14 +254,14 @@ public class RegisterPage extends javax.swing.JFrame implements method{
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -285,14 +279,6 @@ public class RegisterPage extends javax.swing.JFrame implements method{
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUsernameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jUsernameActionPerformed
-
-    private void jPhoneNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPhoneNumberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPhoneNumberActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             // TODO add your handling code here:
@@ -302,28 +288,33 @@ public class RegisterPage extends javax.swing.JFrame implements method{
                 JOptionPane.showMessageDialog(this,"Password harus minimal panjang 8","Message",JOptionPane.ERROR_MESSAGE);
             }else if(!jPhoneNumber.getText().matches("[0-9]*")){
                 JOptionPane.showMessageDialog(null,"Nomor Telpon harus berupa angka","Message",JOptionPane.ERROR_MESSAGE);
+            }else {
+                this.dispose();
             }
-            
+
             //insert data ke database
             PreparedStatement pStatement = null;
-            sql = "INSERT INTO datauser(name, username, password, phone_number, address)" + "VALUES (?,?,?,?,?);";
+            sql = "INSERT INTO datauser(name, username, password, phone_number)" + "VALUES (?,?,?,?);";
             pStatement = connect.prepareStatement(sql);
-            
+
             pStatement.setString(1, jName.getText());
             pStatement.setString(2, jUsername.getText());
             pStatement.setString(3, jPassword.getText());
             pStatement.setString(4, jPhoneNumber.getText());
-            
+
             int intBaris=pStatement.executeUpdate();
             if (intBaris>0) {
                 System.out.println("Berhasil menambahkan data");
+                JOptionPane.showMessageDialog(null, "Berhasil Registrasi", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
+                new LoginPage().setVisible(true);
+                this.dispose();
             } else {
                 System.out.println("Penambahan data gagal");
             }
         } catch (SQLException ex) {
             Logger.getLogger(RegisterPage.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.dispose();
+//        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
