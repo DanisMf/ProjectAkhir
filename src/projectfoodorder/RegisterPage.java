@@ -366,8 +366,8 @@ public class RegisterPage extends javax.swing.JFrame{
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        new LoginPage().setVisible(true);
         this.dispose();
+        new LoginPage().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordActionPerformed

@@ -17,6 +17,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 
 interface campuran{
     void kembalian();
@@ -128,10 +130,10 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Pesanan");
         model.addColumn("QTY");
-        model.addColumn("Harga");
+        model.addColumn("Total");
         jTable1.setModel(model);
-        txt_totalItem.setText(null);
-        txt_totalHarga.setText(null);
+        txt_totalItem.setText("0");
+        txt_totalHarga.setText("Rp. 0,00");
     }
 
     /**
@@ -147,6 +149,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         LabelJamRealTime = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         cb_Paincake = new javax.swing.JCheckBox();
         cb_chikenBurger = new javax.swing.JCheckBox();
@@ -211,15 +214,18 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         EXIT = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        btn_bayar1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txt_totalItem = new javax.swing.JTextField();
-        txt_totalHarga = new javax.swing.JTextField();
         btn_bayar = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
         txt_inputUang = new javax.swing.JTextField();
+        txt_totalHarga = new javax.swing.JLabel();
+        txt_totalItem = new javax.swing.JLabel();
+        btn_cetakStruk = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -236,6 +242,15 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         LabelJamRealTime.setForeground(new java.awt.Color(255, 255, 255));
         LabelJamRealTime.setText("Jam: 0:00:00 AM");
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 51));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setText("My Profile");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -244,7 +259,9 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LabelJamRealTime)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(LabelJamRealTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -255,6 +272,8 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                 .addContainerGap(15, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LabelJamRealTime)
                 .addContainerGap())
         );
@@ -595,7 +614,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                                 .addComponent(sp_tehManis, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(cb_airMineral)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                                 .addComponent(sp_airMineral, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(cb_kelapaMuda)
@@ -732,6 +751,15 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
             }
         });
 
+        btn_bayar1.setBackground(new java.awt.Color(255, 255, 0));
+        btn_bayar1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_bayar1.setText("PROSES TRANSAKSI");
+        btn_bayar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_bayar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -740,9 +768,14 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_bayar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
@@ -752,10 +785,6 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(EXIT, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20))
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -769,10 +798,14 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                     .addComponent(jButton8)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(EXIT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(27, 27, 27)
+                .addComponent(btn_bayar1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
         );
 
         jPanel5.setBackground(new java.awt.Color(18, 103, 130));
@@ -790,12 +823,6 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("TOTAL HARGA");
 
-        txt_totalItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_totalItemActionPerformed(evt);
-            }
-        });
-
         btn_bayar.setBackground(new java.awt.Color(255, 255, 0));
         btn_bayar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_bayar.setText("BAYAR");
@@ -809,6 +836,28 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("MASUKAN UANG ANDA");
 
+        txt_totalHarga.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txt_totalHarga.setForeground(new java.awt.Color(255, 255, 255));
+        txt_totalHarga.setText("Rp. 0,00");
+
+        txt_totalItem.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        txt_totalItem.setForeground(new java.awt.Color(255, 255, 255));
+        txt_totalItem.setText("0");
+
+        btn_cetakStruk.setBackground(new java.awt.Color(51, 255, 0));
+        btn_cetakStruk.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_cetakStruk.setText("CETAK STRUK");
+        btn_cetakStruk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cetakStrukActionPerformed(evt);
+            }
+        });
+
+        jTextField1.setBackground(new java.awt.Color(255, 0, 51));
+        jTextField1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setText("STATUS PEMBAYARAN");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -818,44 +867,57 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addContainerGap())
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
+                            .addComponent(jLabel28)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel28))
+                            .addComponent(jLabel6))
                         .addGap(70, 70, 70)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(txt_inputUang, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26))
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_totalItem, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txt_totalHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addContainerGap(287, Short.MAX_VALUE))))))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txt_inputUang, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
+                            .addComponent(txt_totalHarga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txt_totalItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_cetakStruk, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(btn_bayar, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(jTextField1))
+                        .addGap(21, 21, 21))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addGap(41, 41, 41)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txt_totalItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 24, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_totalHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel28)
-                    .addComponent(txt_inputUang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_bayar))
-                .addGap(23, 23, 23))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txt_totalItem)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(btn_bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txt_totalHarga)))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(btn_cetakStruk, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel28))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_inputUang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -895,11 +957,11 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1196, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1187, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 726, Short.MAX_VALUE)
         );
 
         pack();
@@ -984,22 +1046,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         if(cb_jeruk.isSelected() && (Integer)sp_jeruk.getValue()>0){
             model.addRow(new Object[]{cb_jeruk.getText(), (Integer)sp_jeruk.getValue(), (Integer)sp_jeruk.getValue()*5000});
         }
-        ////menambil nilai penjumlahan dari kolom qty di jTable dan masuk ke txt_totalItem
-        int total1 = 0;
-        for (int i =0; i < jTable1.getRowCount(); i++){
-            int amount = (Integer)jTable1.getValueAt(i, 1);
-            total1 += amount;
-        }
-        txt_totalItem.setText(""+total1);
-        ///
-        ////menambil nilai penjumlahan dari kolom Harga di jTable dan masuk ke txt_totalHarga
-        int total = 0;
-        for (int i =0; i < jTable1.getRowCount(); i++){
-            int amount = (Integer)jTable1.getValueAt(i, 2);
-            total += amount;
-        }
-        txt_totalHarga.setText(""+total);
-        ///
+        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void cb_esCampurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_esCampurActionPerformed
@@ -1015,17 +1062,20 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         // TODO add your handling code here:
         int a = jTable1.getSelectedRow();
         int b = a + 1;
+        DefaultTableModel dm = (DefaultTableModel)jTable1.getModel();
+        dm.getRowCount();
+        dm.removeRow(a);
     }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void txt_totalItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_totalItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_totalItemActionPerformed
 
     private void btn_bayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bayarActionPerformed
         // TODO add your handling code here:
-        int total_harga = (Integer)Integer.parseInt(txt_totalHarga.getText());
+        double total = 0;
+        for (int i =0; i < jTable1.getRowCount(); i++){
+            double amount = (Integer)jTable1.getValueAt(i, 2);
+            total += amount;
+        }
         int input_uang = (Integer)Integer.parseInt(txt_inputUang.getText());
-        if(txt_inputUang.getText().equals("") || input_uang < total_harga){
+        if(txt_inputUang.getText().equals("") || input_uang < total){
             JOptionPane.showMessageDialog(null, "Uang anda tidak mencukupi untuk melakukan transaksi ini");
         }else{
             try {
@@ -1066,9 +1116,38 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
 
     private void EXITActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EXITActionPerformed
         // TODO add your handling code here:
-        new Dashboard().setVisible(false);
         new LoginPage().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_EXITActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new UserProfile().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btn_bayar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bayar1ActionPerformed
+        // TODO add your handling code here:
+        ////menambil nilai penjumlahan dari kolom qty di jTable dan masuk ke txt_totalItem
+        int total1 = 0;
+        for (int i =0; i < jTable1.getRowCount(); i++){
+            int amount = (Integer)jTable1.getValueAt(i, 1);
+            total1 += amount;
+        }
+        txt_totalItem.setText(""+total1);
+        ///
+        ////menambil nilai penjumlahan dari kolom Harga di jTable dan masuk ke txt_totalHarga
+        double total = 0;
+        for (int i =0; i < jTable1.getRowCount(); i++){
+            double amount = (Integer)jTable1.getValueAt(i, 2);
+            total += amount;
+        }
+        txt_totalHarga.setText("Rp. "+ total);
+        ///
+    }//GEN-LAST:event_btn_bayar1ActionPerformed
+
+    private void btn_cetakStrukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cetakStrukActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_cetakStrukActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1112,6 +1191,8 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
     private javax.swing.JButton EXIT;
     private javax.swing.JLabel LabelJamRealTime;
     private javax.swing.JButton btn_bayar;
+    private javax.swing.JButton btn_bayar1;
+    private javax.swing.JButton btn_cetakStruk;
     private javax.swing.JCheckBox cb_Cendol;
     private javax.swing.JCheckBox cb_Hamburger;
     private javax.swing.JCheckBox cb_Paincake;
@@ -1128,6 +1209,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
     private javax.swing.JCheckBox cb_podeng;
     private javax.swing.JCheckBox cb_sweetPotato;
     private javax.swing.JCheckBox cb_tehManis;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
@@ -1167,6 +1249,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JSpinner sp_Cendol;
     private javax.swing.JSpinner sp_Hamburger;
     private javax.swing.JSpinner sp_Paincake;
@@ -1184,8 +1267,8 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
     private javax.swing.JSpinner sp_sweetPotato;
     private javax.swing.JSpinner sp_tehManis;
     private javax.swing.JTextField txt_inputUang;
-    private javax.swing.JTextField txt_totalHarga;
-    private javax.swing.JTextField txt_totalItem;
+    private javax.swing.JLabel txt_totalHarga;
+    private javax.swing.JLabel txt_totalItem;
     // End of variables declaration//GEN-END:variables
 
     private static class object {
