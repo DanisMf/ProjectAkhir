@@ -9,21 +9,52 @@ import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-interface method{
-    void koneksi();
-}
+
 
 /**
  *
  * @author ACER
  */
-public class RegisterPage extends javax.swing.JFrame implements method{
+public class RegisterPage extends javax.swing.JFrame{
+    
+    String url = "jdbc:mysql://localhost/projectfoodorder";
+    String user = "root";
+    String pass = "";
+    String id_user = "";
+    
+    public void kode_barang_otomatis(){
+        try{
+            connect = DriverManager.getConnection(url, user,pass);
+            stm = connect.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM datauser order by id_user desc");
+            if(rs.next()){
+                String kode = rs.getString("id_user").substring(3);
+                String AN = "" +(Integer.parseInt(kode)+1);
+                String Nol = "";
+                
+                if(AN.length() == 1)
+                {Nol = "00";}
+                else if(AN.length() == 2)
+                {Nol = "0";}
+                else if(AN.length() == 3)
+                {Nol = "";}
+                
+                id_user = "ID-" + Nol + AN;
+                
+            }else{
+                id_user = "ID-001";
+            }    
+        }catch(Exception ex){
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     /**
      * Creates new form LoginPage
@@ -31,6 +62,7 @@ public class RegisterPage extends javax.swing.JFrame implements method{
     public RegisterPage() {
         initComponents();
         koneksi();
+        kode_barang_otomatis();
     }
     
     public static Connection connect;
@@ -39,13 +71,10 @@ public class RegisterPage extends javax.swing.JFrame implements method{
     private String sql = "";
     
     /**
-     * Ovveride method yang ada di interface method
+     *
      */
-    @Override
+    
     public void koneksi(){
-        String url = "jdbc:mysql://localhost/projectfoodorder";
-        String user = "root";
-        String pass = "";
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             connect = DriverManager.getConnection(url, user,pass);
@@ -282,36 +311,54 @@ public class RegisterPage extends javax.swing.JFrame implements method{
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
             // TODO add your handling code here:
+            
+            String userName = jUsername.getText();
+            String cekuser = null;
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connect = DriverManager.getConnection(url, user,pass);
+            stm = connect.createStatement();
+            String sql = "SELECT * FROM datauser WHERE username = '"+userName+"'";
+            ResultSet r = stm.executeQuery(sql);
+            while(r.next()){
+                cekuser = r.getString ("username");
+            }
+            r.close();
+            stm.close();
+            
             if(jName.getText().isEmpty() || jUsername.getText().isEmpty() || jPassword.getText().isEmpty() || jPhoneNumber.getText().isEmpty()){
                 JOptionPane.showMessageDialog(this,"Data tidak boleh kosong","Message",JOptionPane.ERROR_MESSAGE);
             }else if(jPassword.getText().length() < 8){
                 JOptionPane.showMessageDialog(this,"Password harus minimal panjang 8","Message",JOptionPane.ERROR_MESSAGE);
             }else if(!jPhoneNumber.getText().matches("[0-9]*")){
                 JOptionPane.showMessageDialog(null,"Nomor Telpon harus berupa angka","Message",JOptionPane.ERROR_MESSAGE);
-            }else {
+            }else if(userName.equals(cekuser)){
+                JOptionPane.showMessageDialog(null,"this username already exist!","Message",JOptionPane.ERROR_MESSAGE);
+            }else{
                 this.dispose();
-            }
+                //insert data ke database
+                PreparedStatement pStatement = null;
+                sql = "INSERT INTO datauser(id_user, name, username, password, phone_number)" + "VALUES (?,?,?,?,?);";
+                pStatement = connect.prepareStatement(sql);
 
-            //insert data ke database
-            PreparedStatement pStatement = null;
-            sql = "INSERT INTO datauser(name, username, password, phone_number)" + "VALUES (?,?,?,?);";
-            pStatement = connect.prepareStatement(sql);
+                pStatement.setString(1, id_user);
+                pStatement.setString(2, jName.getText());
+                pStatement.setString(3, jUsername.getText());
+                pStatement.setString(4, jPassword.getText());
+                pStatement.setString(5, jPhoneNumber.getText());
 
-            pStatement.setString(1, jName.getText());
-            pStatement.setString(2, jUsername.getText());
-            pStatement.setString(3, jPassword.getText());
-            pStatement.setString(4, jPhoneNumber.getText());
-
-            int intBaris=pStatement.executeUpdate();
-            if (intBaris>0) {
-                System.out.println("Berhasil menambahkan data");
-                JOptionPane.showMessageDialog(null, "Berhasil Registrasi", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
-                new LoginPage().setVisible(true);
-                this.dispose();
-            } else {
-                System.out.println("Penambahan data gagal");
+                int intBaris=pStatement.executeUpdate();
+                if (intBaris>0) {
+                    System.out.println("Berhasil menambahkan data");
+                    JOptionPane.showMessageDialog(null, "Berhasil Registrasi", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
+                    new LoginPage().setVisible(true);
+                    this.dispose();
+                } else {
+                    System.out.println("Penambahan data gagal");
+                }
             }
         } catch (SQLException ex) {
+            Logger.getLogger(RegisterPage.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(RegisterPage.class.getName()).log(Level.SEVERE, null, ex);
         }
 //        this.dispose();

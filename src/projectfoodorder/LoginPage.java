@@ -52,7 +52,6 @@ public class LoginPage extends javax.swing.JFrame{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSpinField1 = new com.toedter.components.JSpinField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -316,6 +315,7 @@ public class LoginPage extends javax.swing.JFrame{
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
             }
+            new LoadingPage().setVisible(true);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -379,7 +379,6 @@ public class LoginPage extends javax.swing.JFrame{
     private javax.swing.JPanel jPanel9;
     private javax.swing.JPasswordField jPassword;
     private javax.swing.JCheckBox jShowPasswrod;
-    private com.toedter.components.JSpinField jSpinField1;
     private javax.swing.JTextField jUsername;
     // End of variables declaration//GEN-END:variables
 }

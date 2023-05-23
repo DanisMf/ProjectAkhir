@@ -4,21 +4,31 @@
  */
 package projectfoodorder;
 
+import com.mysql.cj.protocol.Resultset;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Calendar;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
+interface campuran{
+    void kembalian();
+    void KosongkanForm();
+    void kode_barang_otomatis();
+}
 
 /**
  *
  * @author DELL
  */
-public class Dashboard extends javax.swing.JFrame {
+public class Dashboard extends javax.swing.JFrame implements campuran{
         
     
     private int waktumulai = 0;
@@ -28,6 +38,9 @@ public class Dashboard extends javax.swing.JFrame {
     String url = "jdbc:mysql://localhost/projectfoodorder";
     String user = "root";
     String pass = "";
+    
+    String kode_transaksi = "";
+    String cek_id = "";
     
     public void koneksi(){
         try{
@@ -40,36 +53,77 @@ public class Dashboard extends javax.swing.JFrame {
         }
     }
     
-    private void JamRealTime(){
-    new Thread(){
-        @Override
-        public void run(){
-            while(waktumulai == 0){
-                Calendar kalender = new GregorianCalendar();
-                int jam = kalender.get(Calendar.HOUR);
-                int menit = kalender.get(Calendar.MINUTE);
-                int detik = kalender.get(Calendar.SECOND);
-                int AMPM = kalender.get(Calendar.AM_PM);
-                String SiangMalam;
-                if(AMPM == 1){
-                    SiangMalam = "PM";
-                }else{
-                   SiangMalam = "AM";
-                }                  
-                String JamRealTime = jam + ":" + menit + ":" + detik + " " + SiangMalam;
-                LabelJamRealTime.setText("Jam: " + JamRealTime);
-            }
+    @Override
+    public void kode_barang_otomatis(){
+        
+        try{
+            String sql = "SELECT * FROM datauser WHERE id_user";
+            connect = DriverManager.getConnection(url, user,pass);
+            stm = connect.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT * FROM datatransaksi order by kode_transaksi desc");
+            if(rs.next()){
+                String kode = rs.getString("kode_transaksi").substring(3);
+                String AN = "" +(Integer.parseInt(kode)+1);
+                String Nol = "";
+                
+                if(AN.length() == 1)
+                {Nol = "00";}
+                else if(AN.length() == 2)
+                {Nol = "0";}
+                else if(AN.length() == 3)
+                {Nol = "";}
+                
+                kode_transaksi = "KT-" + Nol + AN;
+                
+            }else{
+                kode_transaksi = "KT-001";
+            }    
+        }catch(Exception ex){
+            Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }.start();
+    }
     
+    private void JamRealTime(){
+        new Thread(){
+            @Override
+            public void run(){
+                while(waktumulai == 0){
+                    Calendar kalender = new GregorianCalendar();
+                    int jam = kalender.get(Calendar.HOUR);
+                    int menit = kalender.get(Calendar.MINUTE);
+                    int detik = kalender.get(Calendar.SECOND);
+                    int AMPM = kalender.get(Calendar.AM_PM);
+                    String SiangMalam;
+                    if(AMPM == 1){
+                        SiangMalam = "PM";
+                    }else{
+                       SiangMalam = "AM";
+                    }                  
+                    String JamRealTime = jam + ":" + menit + ":" + detik + " " + SiangMalam;
+                    LabelJamRealTime.setText("Jam: " + JamRealTime);
+                }
+            }
+        }.start();
+    }
+    
+    
+    @Override
+    public void kembalian(){
+        String x = txt_totalHarga.getText();
+        String y = txt_inputUang.getText();
+        int a = Integer.parseInt(x);
+        int b = Integer.parseInt(y);
+        int total = b - a;
     }
     
    
     public Dashboard() {
         initComponents();
         JamRealTime();
+        kode_barang_otomatis();
     }
     
+    @Override
     public void KosongkanForm(){
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Pesanan");
@@ -163,9 +217,9 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txt_totalItem = new javax.swing.JTextField();
         txt_totalHarga = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btn_bayar = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
-        jTextField15 = new javax.swing.JTextField();
+        txt_inputUang = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -652,6 +706,11 @@ public class Dashboard extends javax.swing.JFrame {
         EXIT.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         EXIT.setForeground(new java.awt.Color(255, 255, 255));
         EXIT.setText("EXIT");
+        EXIT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EXITActionPerformed(evt);
+            }
+        });
 
         jButton7.setBackground(new java.awt.Color(51, 204, 0));
         jButton7.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -731,9 +790,20 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("TOTAL HARGA");
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 0));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton1.setText("BAYAR");
+        txt_totalItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_totalItemActionPerformed(evt);
+            }
+        });
+
+        btn_bayar.setBackground(new java.awt.Color(255, 255, 0));
+        btn_bayar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_bayar.setText("BAYAR");
+        btn_bayar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_bayarActionPerformed(evt);
+            }
+        });
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
@@ -757,9 +827,9 @@ public class Dashboard extends javax.swing.JFrame {
                         .addGap(70, 70, 70)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txt_inputUang, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btn_bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(26, 26, 26))
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -776,15 +846,15 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txt_totalItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addGap(18, 24, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_totalHarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
-                    .addComponent(jTextField15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(txt_inputUang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_bayar))
                 .addGap(23, 23, 23))
         );
 
@@ -861,12 +931,12 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_cb_jerukActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
         
+        // TODO add your handling code here:
         ////checkout pesanan makanan
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         if(cb_Paincake.isSelected() && (Integer)sp_Paincake.getValue()>0){
-            model.addRow(new Object[]{cb_Paincake.getText(), (Integer)sp_Paincake.getValue(), (Integer)sp_Paincake.getValue()*15000});
+            model.addRow(new Object[]{cb_Paincake.getText(), (Integer)sp_Paincake.getValue(), (Integer)sp_chikenNuggets.getValue()*15000});
         }
         if(cb_chikenNuggets.isSelected() && (Integer)sp_chikenNuggets.getValue()>0){
             model.addRow(new Object[]{cb_chikenNuggets.getText(), (Integer)sp_chikenNuggets.getValue(), (Integer)sp_chikenNuggets.getValue()*15000});
@@ -889,7 +959,6 @@ public class Dashboard extends javax.swing.JFrame {
         if(cb_creamSoup.isSelected() && (Integer)sp_creamSoup.getValue()>0){
             model.addRow(new Object[]{cb_creamSoup.getText(), (Integer)sp_creamSoup.getValue(), (Integer)sp_creamSoup.getValue()*12000});
         }
-        
         ////checkout pesanan minuman
         if(cb_esCampur.isSelected() && (Integer)sp_esCampur.getValue()>0){
             model.addRow(new Object[]{cb_esCampur.getText(), (Integer)sp_esCampur.getValue(), (Integer)sp_esCampur.getValue()*10000});
@@ -915,7 +984,6 @@ public class Dashboard extends javax.swing.JFrame {
         if(cb_jeruk.isSelected() && (Integer)sp_jeruk.getValue()>0){
             model.addRow(new Object[]{cb_jeruk.getText(), (Integer)sp_jeruk.getValue(), (Integer)sp_jeruk.getValue()*5000});
         }
-        
         ////menambil nilai penjumlahan dari kolom qty di jTable dan masuk ke txt_totalItem
         int total1 = 0;
         for (int i =0; i < jTable1.getRowCount(); i++){
@@ -924,7 +992,6 @@ public class Dashboard extends javax.swing.JFrame {
         }
         txt_totalItem.setText(""+total1);
         ///
-        
         ////menambil nilai penjumlahan dari kolom Harga di jTable dan masuk ke txt_totalHarga
         int total = 0;
         for (int i =0; i < jTable1.getRowCount(); i++){
@@ -949,6 +1016,59 @@ public class Dashboard extends javax.swing.JFrame {
         int a = jTable1.getSelectedRow();
         int b = a + 1;
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void txt_totalItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_totalItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_totalItemActionPerformed
+
+    private void btn_bayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bayarActionPerformed
+        // TODO add your handling code here:
+        int total_harga = (Integer)Integer.parseInt(txt_totalHarga.getText());
+        int input_uang = (Integer)Integer.parseInt(txt_inputUang.getText());
+        if(txt_inputUang.getText().equals("") || input_uang < total_harga){
+            JOptionPane.showMessageDialog(null, "Uang anda tidak mencukupi untuk melakukan transaksi ini");
+        }else{
+            try {
+                ///menginput data dari jTable ke database
+                int b = 0;
+                int barisTable = jTable1.getRowCount();
+                String sqlb;
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                connect = DriverManager.getConnection(url, user,pass);
+                stm = connect.createStatement();
+                
+                PreparedStatement pStatement = null;
+                for(int a = 0; a <= barisTable; a++){
+                    sqlb = "INSERT INTO datatransaksi(kode_transaksi, nama_pesanan, quantity, total_harga)" + "VALUES (?,?,?,?);";
+                    
+                    pStatement = connect.prepareStatement(sqlb);
+
+                    pStatement.setString(1, kode_transaksi);
+                    pStatement.setString(2, jTable1.getValueAt(a,0).toString());
+                    pStatement.setString(3, jTable1.getValueAt(a,1).toString());
+                    pStatement.setString(4, jTable1.getValueAt(a,2).toString());
+
+                    int intBaris = pStatement.executeUpdate();
+                    if (intBaris>0) {
+                        System.out.println("Berhasil menambahkan data");
+                    } else {
+                        System.out.println("Penambahan data gagal");
+                    }
+                }
+                JOptionPane.showMessageDialog(null, "Pembelian anda berhasil");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btn_bayarActionPerformed
+
+    private void EXITActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EXITActionPerformed
+        // TODO add your handling code here:
+        new Dashboard().setVisible(false);
+        new LoginPage().setVisible(true);
+    }//GEN-LAST:event_EXITActionPerformed
 
     /**
      * @param args the command line arguments
@@ -991,6 +1111,7 @@ public class Dashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton EXIT;
     private javax.swing.JLabel LabelJamRealTime;
+    private javax.swing.JButton btn_bayar;
     private javax.swing.JCheckBox cb_Cendol;
     private javax.swing.JCheckBox cb_Hamburger;
     private javax.swing.JCheckBox cb_Paincake;
@@ -1007,7 +1128,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JCheckBox cb_podeng;
     private javax.swing.JCheckBox cb_sweetPotato;
     private javax.swing.JCheckBox cb_tehManis;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
@@ -1047,7 +1167,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField15;
     private javax.swing.JSpinner sp_Cendol;
     private javax.swing.JSpinner sp_Hamburger;
     private javax.swing.JSpinner sp_Paincake;
@@ -1064,6 +1183,7 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JSpinner sp_podeng;
     private javax.swing.JSpinner sp_sweetPotato;
     private javax.swing.JSpinner sp_tehManis;
+    private javax.swing.JTextField txt_inputUang;
     private javax.swing.JTextField txt_totalHarga;
     private javax.swing.JTextField txt_totalItem;
     // End of variables declaration//GEN-END:variables
