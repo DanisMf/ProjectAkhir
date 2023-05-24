@@ -103,8 +103,8 @@ public class RegisterPage extends javax.swing.JFrame{
         jPhoneNumber = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jPassword = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        tombolSignIn = new javax.swing.JButton();
+        tombolRegist = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -136,29 +136,23 @@ public class RegisterPage extends javax.swing.JFrame{
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Password");
 
-        jPassword.addActionListener(new java.awt.event.ActionListener() {
+        tombolSignIn.setBackground(new java.awt.Color(252, 202, 70));
+        tombolSignIn.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        tombolSignIn.setForeground(new java.awt.Color(255, 255, 255));
+        tombolSignIn.setText("SIGN IN");
+        tombolSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordActionPerformed(evt);
+                tombolSignInActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(252, 202, 70));
-        jButton1.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("SIGN IN");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        tombolRegist.setBackground(new java.awt.Color(97, 155, 138));
+        tombolRegist.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        tombolRegist.setForeground(new java.awt.Color(255, 255, 255));
+        tombolRegist.setText("REGIST");
+        tombolRegist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setBackground(new java.awt.Color(97, 155, 138));
-        jButton2.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("REGIST");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                tombolRegistActionPerformed(evt);
             }
         });
 
@@ -177,7 +171,7 @@ public class RegisterPage extends javax.swing.JFrame{
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 17, Short.MAX_VALUE)
+            .addGap(0, 19, Short.MAX_VALUE)
         );
 
         jPanel7.setBackground(new java.awt.Color(246, 174, 45));
@@ -190,7 +184,7 @@ public class RegisterPage extends javax.swing.JFrame{
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 21, Short.MAX_VALUE)
+            .addGap(0, 17, Short.MAX_VALUE)
         );
 
         jPanel8.setBackground(new java.awt.Color(134, 187, 216));
@@ -238,9 +232,9 @@ public class RegisterPage extends javax.swing.JFrame{
                             .addComponent(jPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tombolSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tombolRegist, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel3)
                                 .addComponent(jUsername)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -281,9 +275,9 @@ public class RegisterPage extends javax.swing.JFrame{
                 .addComponent(jPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                    .addComponent(tombolSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolRegist, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -308,7 +302,7 @@ public class RegisterPage extends javax.swing.JFrame{
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void tombolRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolRegistActionPerformed
         try {
             // TODO add your handling code here:
             
@@ -362,17 +356,13 @@ public class RegisterPage extends javax.swing.JFrame{
             Logger.getLogger(RegisterPage.class.getName()).log(Level.SEVERE, null, ex);
         }
 //        this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_tombolRegistActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void tombolSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolSignInActionPerformed
         // TODO add your handling code here:
         this.dispose();
         new LoginPage().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordActionPerformed
+    }//GEN-LAST:event_tombolSignInActionPerformed
 
     /**
      * @param args the command line arguments
@@ -411,8 +401,6 @@ public class RegisterPage extends javax.swing.JFrame{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -428,5 +416,7 @@ public class RegisterPage extends javax.swing.JFrame{
     private javax.swing.JPasswordField jPassword;
     private javax.swing.JTextField jPhoneNumber;
     private javax.swing.JTextField jUsername;
+    private javax.swing.JButton tombolRegist;
+    private javax.swing.JButton tombolSignIn;
     // End of variables declaration//GEN-END:variables
 }

@@ -142,7 +142,7 @@ public class LoginPage extends javax.swing.JFrame{
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 17, Short.MAX_VALUE)
+            .addGap(0, 21, Short.MAX_VALUE)
         );
 
         jPanel7.setBackground(new java.awt.Color(246, 174, 45));
@@ -155,7 +155,7 @@ public class LoginPage extends javax.swing.JFrame{
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 21, Short.MAX_VALUE)
+            .addGap(0, 16, Short.MAX_VALUE)
         );
 
         jPanel8.setBackground(new java.awt.Color(51, 101, 138));
@@ -168,7 +168,7 @@ public class LoginPage extends javax.swing.JFrame{
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 15, Short.MAX_VALUE)
+            .addGap(0, 12, Short.MAX_VALUE)
         );
 
         jPanel9.setBackground(new java.awt.Color(85, 221, 224));
@@ -321,7 +321,7 @@ public class LoginPage extends javax.swing.JFrame{
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        new Dashboard().setVisible(true);
+        new RegisterPage().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordActionPerformed
