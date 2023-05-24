@@ -283,6 +283,11 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
 
         cb_Paincake.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         cb_Paincake.setText("Paincake");
+        cb_Paincake.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_PaincakeActionPerformed(evt);
+            }
+        });
 
         cb_chikenBurger.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         cb_chikenBurger.setText("Chicken burger");
@@ -917,7 +922,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_inputUang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -993,9 +998,8 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
     }//GEN-LAST:event_cb_jerukActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        
+
         // TODO add your handling code here:
-        ////checkout pesanan makanan
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         if(cb_Paincake.isSelected() && (Integer)sp_Paincake.getValue()>0){
             model.addRow(new Object[]{cb_Paincake.getText(), (Integer)sp_Paincake.getValue(), (Integer)sp_chikenNuggets.getValue()*15000});
@@ -1046,7 +1050,6 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         if(cb_jeruk.isSelected() && (Integer)sp_jeruk.getValue()>0){
             model.addRow(new Object[]{cb_jeruk.getText(), (Integer)sp_jeruk.getValue(), (Integer)sp_jeruk.getValue()*5000});
         }
-        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void cb_esCampurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_esCampurActionPerformed
@@ -1063,8 +1066,9 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         int a = jTable1.getSelectedRow();
         int b = a + 1;
         DefaultTableModel dm = (DefaultTableModel)jTable1.getModel();
-        dm.getRowCount();
         dm.removeRow(a);
+        dm.getValueAt(a,0).toString();
+        dm.getValueAt(a,1).toString();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void btn_bayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bayarActionPerformed
@@ -1148,6 +1152,10 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
     private void btn_cetakStrukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cetakStrukActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_cetakStrukActionPerformed
+
+    private void cb_PaincakeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_PaincakeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_PaincakeActionPerformed
 
     /**
      * @param args the command line arguments
