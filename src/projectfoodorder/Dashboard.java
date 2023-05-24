@@ -243,11 +243,10 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        EXIT = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        btn_bayar1 = new javax.swing.JButton();
+        btn_delete = new javax.swing.JButton();
+        btn_exit = new javax.swing.JButton();
+        btn_checkout = new javax.swing.JButton();
+        btn_reset = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -257,12 +256,12 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         txt_inputUang = new javax.swing.JTextField();
         txt_totalHarga = new javax.swing.JLabel();
         txt_totalItem = new javax.swing.JLabel();
-        btn_bayar2 = new javax.swing.JButton();
+        btn_showStruk = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         struk = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
+        btn_cetakStruk = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
 
@@ -713,52 +712,43 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("PESANAN ANDA ");
 
-        jButton5.setBackground(new java.awt.Color(153, 0, 0));
-        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("DELETE");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btn_delete.setBackground(new java.awt.Color(153, 0, 0));
+        btn_delete.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btn_delete.setForeground(new java.awt.Color(255, 255, 255));
+        btn_delete.setText("DELETE");
+        btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btn_deleteActionPerformed(evt);
             }
         });
 
-        EXIT.setBackground(new java.awt.Color(255, 0, 0));
-        EXIT.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        EXIT.setForeground(new java.awt.Color(255, 255, 255));
-        EXIT.setText("EXIT");
-        EXIT.addActionListener(new java.awt.event.ActionListener() {
+        btn_exit.setBackground(new java.awt.Color(255, 0, 0));
+        btn_exit.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btn_exit.setForeground(new java.awt.Color(255, 255, 255));
+        btn_exit.setText("EXIT");
+        btn_exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                EXITActionPerformed(evt);
+                btn_exitActionPerformed(evt);
             }
         });
 
-        jButton7.setBackground(new java.awt.Color(51, 204, 0));
-        jButton7.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(255, 255, 255));
-        jButton7.setText("CHECKOUT");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btn_checkout.setBackground(new java.awt.Color(51, 204, 0));
+        btn_checkout.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        btn_checkout.setForeground(new java.awt.Color(255, 255, 255));
+        btn_checkout.setText("CHECKOUT");
+        btn_checkout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btn_checkoutActionPerformed(evt);
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(63, 73, 127));
-        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(255, 255, 255));
-        jButton8.setText("RESET");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btn_reset.setBackground(new java.awt.Color(63, 73, 127));
+        btn_reset.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btn_reset.setForeground(new java.awt.Color(255, 255, 255));
+        btn_reset.setText("RESET");
+        btn_reset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-
-        btn_bayar1.setBackground(new java.awt.Color(255, 255, 0));
-        btn_bayar1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_bayar1.setText("PROSES TRANSAKSI");
-        btn_bayar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_bayar1ActionPerformed(evt);
+                btn_resetActionPerformed(evt);
             }
         });
 
@@ -769,19 +759,18 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_bayar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btn_checkout, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
+                            .addComponent(btn_reset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                            .addComponent(EXIT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btn_delete, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                            .addComponent(btn_exit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -790,18 +779,16 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addGap(14, 14, 14)
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8)
-                    .addComponent(jButton5))
+                    .addComponent(btn_reset)
+                    .addComponent(btn_delete))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7)
-                    .addComponent(EXIT))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_bayar1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(btn_checkout)
+                    .addComponent(btn_exit))
+                .addGap(61, 61, 61))
         );
 
         jPanel5.setBackground(new java.awt.Color(18, 103, 130));
@@ -819,7 +806,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("TOTAL HARGA");
 
-        btn_bayar.setBackground(new java.awt.Color(255, 255, 0));
+        btn_bayar.setBackground(new java.awt.Color(51, 255, 0));
         btn_bayar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_bayar.setText("BAYAR");
         btn_bayar.addActionListener(new java.awt.event.ActionListener() {
@@ -840,12 +827,12 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         txt_totalItem.setForeground(new java.awt.Color(255, 255, 255));
         txt_totalItem.setText("0");
 
-        btn_bayar2.setBackground(new java.awt.Color(255, 255, 0));
-        btn_bayar2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        btn_bayar2.setText("STRUK");
-        btn_bayar2.addActionListener(new java.awt.event.ActionListener() {
+        btn_showStruk.setBackground(new java.awt.Color(255, 255, 0));
+        btn_showStruk.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_showStruk.setText("STRUK");
+        btn_showStruk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_bayar2ActionPerformed(evt);
+                btn_showStrukActionPerformed(evt);
             }
         });
 
@@ -872,7 +859,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_bayar2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btn_showStruk, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27))))
         );
         jPanel5Layout.setVerticalGroup(
@@ -880,26 +867,25 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(txt_totalItem))
-                        .addGap(22, 22, 22)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(txt_totalHarga))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel28)
-                        .addGap(31, 31, 31))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(btn_bayar2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btn_bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_inputUang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txt_totalItem))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(txt_totalHarga))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel28)
+                .addGap(31, 31, 31))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txt_inputUang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_showStruk, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27))
         );
 
         jPanel7.setBackground(new java.awt.Color(255, 183, 3));
@@ -913,12 +899,12 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         struk.setRows(5);
         jScrollPane3.setViewportView(struk);
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 0));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton2.setText("CETAK STRUK");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btn_cetakStruk.setBackground(new java.awt.Color(204, 204, 204));
+        btn_cetakStruk.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn_cetakStruk.setText("CETAK STRUK");
+        btn_cetakStruk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_cetakStrukActionPerformed(evt);
             }
         });
 
@@ -933,7 +919,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel29)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_cetakStruk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -944,7 +930,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                 .addGap(14, 14, 14)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                .addComponent(btn_cetakStruk, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1031,76 +1017,125 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btn_checkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_checkoutActionPerformed
 
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         if(cb_Paincake.isSelected() && (Integer)sp_Paincake.getValue()>0){
-            model.addRow(new Object[]{cb_Paincake.getText(), (Integer)sp_Paincake.getValue(), (Integer)sp_chikenNuggets.getValue()*15000});
+            model.addRow(new Object[]{cb_Paincake.getText(), (Integer)sp_Paincake.getValue(), (Integer)sp_Paincake.getValue()*15000});
+            cb_Paincake.setSelected(false);
+            sp_Paincake.setValue(0);
         }
         if(cb_chikenNuggets.isSelected() && (Integer)sp_chikenNuggets.getValue()>0){
             model.addRow(new Object[]{cb_chikenNuggets.getText(), (Integer)sp_chikenNuggets.getValue(), (Integer)sp_chikenNuggets.getValue()*15000});
+            cb_chikenNuggets.setSelected(false);
+            sp_chikenNuggets.setValue(0);
         }
         if(cb_chikenBurger.isSelected() && (Integer)sp_chikenBurger.getValue()>0){
             model.addRow(new Object[]{cb_chikenBurger.getText(), (Integer)sp_chikenBurger.getValue(), (Integer)sp_chikenBurger.getValue()*20000});
+            cb_chikenBurger.setSelected(false);
+            sp_chikenBurger.setValue(0);
         }
         if(cb_cheeseFries.isSelected() && (Integer)sp_cheeseFries.getValue()>0){
             model.addRow(new Object[]{cb_cheeseFries.getText(), (Integer)sp_cheeseFries.getValue(), (Integer)sp_cheeseFries.getValue()*15000});
+            cb_cheeseFries.setSelected(false);
+            sp_cheeseFries.setValue(0);
         }
         if(cb_sweetPotato.isSelected() && (Integer)sp_sweetPotato.getValue()>0){
             model.addRow(new Object[]{cb_sweetPotato.getText(), (Integer)sp_sweetPotato.getValue(), (Integer)sp_sweetPotato.getValue()*15000});
+            cb_sweetPotato.setSelected(false);
+            sp_sweetPotato.setValue(0);
         }
         if(cb_pepperoniPizza.isSelected() && (Integer)sp_pepperoniPizza.getValue()>0){
             model.addRow(new Object[]{cb_pepperoniPizza.getText(), (Integer)sp_pepperoniPizza.getValue(), (Integer)sp_pepperoniPizza.getValue()*30000});
+            cb_pepperoniPizza.setSelected(false);
+            sp_pepperoniPizza.setValue(0);
         }
         if(cb_Hamburger.isSelected() && (Integer)sp_Hamburger.getValue()>0){
             model.addRow(new Object[]{cb_Hamburger.getText(), (Integer)sp_Hamburger.getValue(), (Integer)sp_Hamburger.getValue()*25000});
+            cb_Hamburger.setSelected(false);
+            sp_Hamburger.setValue(0);
         }
         if(cb_creamSoup.isSelected() && (Integer)sp_creamSoup.getValue()>0){
             model.addRow(new Object[]{cb_creamSoup.getText(), (Integer)sp_creamSoup.getValue(), (Integer)sp_creamSoup.getValue()*12000});
+            cb_creamSoup.setSelected(false);
+            sp_creamSoup.setValue(0);
         }
+        
+        
         ////checkout pesanan minuman
         if(cb_esCampur.isSelected() && (Integer)sp_esCampur.getValue()>0){
             model.addRow(new Object[]{cb_esCampur.getText(), (Integer)sp_esCampur.getValue(), (Integer)sp_esCampur.getValue()*10000});
+            cb_esCampur.setSelected(false);
+            sp_esCampur.setValue(0);
         }
         if(cb_esDoger.isSelected() && (Integer)sp_esDoger.getValue()>0){
             model.addRow(new Object[]{cb_esDoger.getText(), (Integer)sp_esDoger.getValue(), (Integer)sp_esDoger.getValue()*10000});
+            cb_esDoger.setSelected(false);
+            sp_esDoger.setValue(0);
         }
         if(cb_Cendol.isSelected() && (Integer)sp_Cendol.getValue()>0){
             model.addRow(new Object[]{cb_Cendol.getText(), (Integer)sp_Cendol.getValue(), (Integer)sp_Cendol.getValue()*10000});
+            cb_Cendol.setSelected(false);
+            sp_Cendol.setValue(0);
         }
         if(cb_kelapaMuda.isSelected() && (Integer)sp_kelapaMuda.getValue()>0){
             model.addRow(new Object[]{cb_kelapaMuda.getText(), (Integer)sp_kelapaMuda.getValue(), (Integer)sp_kelapaMuda.getValue()*10000});
+            cb_kelapaMuda.setSelected(false);
+            sp_kelapaMuda.setValue(0);
         }
         if(cb_airMineral.isSelected() && (Integer)sp_airMineral.getValue()>0){
             model.addRow(new Object[]{cb_airMineral.getText(), (Integer)sp_airMineral.getValue(), (Integer)sp_airMineral.getValue()*5000});
+            cb_airMineral.setSelected(false);
+            sp_airMineral.setValue(0);
         }
         if(cb_tehManis.isSelected() && (Integer)sp_tehManis.getValue()>0){
             model.addRow(new Object[]{cb_tehManis.getText(), (Integer)sp_tehManis.getValue(), (Integer)sp_tehManis.getValue()*5000});
+            cb_tehManis.setSelected(false);
+            sp_tehManis.setValue(0);
         }
         if(cb_podeng.isSelected() && (Integer)sp_podeng.getValue()>0){
             model.addRow(new Object[]{cb_podeng.getText(), (Integer)sp_podeng.getValue(), (Integer)sp_podeng.getValue()*5000});
+            cb_podeng.setSelected(false);
+            sp_podeng.setValue(0);
         }
         if(cb_jeruk.isSelected() && (Integer)sp_jeruk.getValue()>0){
             model.addRow(new Object[]{cb_jeruk.getText(), (Integer)sp_jeruk.getValue(), (Integer)sp_jeruk.getValue()*5000});
+            cb_jeruk.setSelected(false);
+            sp_jeruk.setValue(0);
         }
         
-    }//GEN-LAST:event_jButton7ActionPerformed
+        ////menambil nilai penjumlahan dari kolom qty di jTable dan masuk ke txt_totalItem
+        int total1 = 0;
+        for (int i =0; i < jTable1.getRowCount(); i++){
+            int amount = (Integer)jTable1.getValueAt(i, 1);
+            total1 += amount;
+        }
+        txt_totalItem.setText(""+total1);
+        ///
+        ////menambil nilai penjumlahan dari kolom Harga di jTable dan masuk ke txt_totalHarga
+        double total = 0;
+        for (int i =0; i < jTable1.getRowCount(); i++){
+            double amount = (Integer)jTable1.getValueAt(i, 2);
+            total += amount;
+        }
+        txt_totalHarga.setText("Rp. "+ total);
+        ///
+        
+    }//GEN-LAST:event_btn_checkoutActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
         // TODO add your handling code here:
         KosongkanForm();
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_btn_resetActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         // TODO add your handling code here:
         int a = jTable1.getSelectedRow();
         int b = a + 1;
         DefaultTableModel dm = (DefaultTableModel)jTable1.getModel();
         dm.removeRow(a);
-        dm.getValueAt(a,0).toString();
-        dm.getValueAt(a,1).toString();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_bayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bayarActionPerformed
         // TODO add your handling code here:
@@ -1149,48 +1184,28 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         }
     }//GEN-LAST:event_btn_bayarActionPerformed
 
-    private void EXITActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EXITActionPerformed
+    private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
         // TODO add your handling code here:
         new LoginPage().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_EXITActionPerformed
+    }//GEN-LAST:event_btn_exitActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 //        new UserProfile().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void btn_bayar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bayar1ActionPerformed
-        // TODO add your handling code here:
-        ////menambil nilai penjumlahan dari kolom qty di jTable dan masuk ke txt_totalItem
-        int total1 = 0;
-        for (int i =0; i < jTable1.getRowCount(); i++){
-            int amount = (Integer)jTable1.getValueAt(i, 1);
-            total1 += amount;
-        }
-        txt_totalItem.setText(""+total1);
-        ///
-        ////menambil nilai penjumlahan dari kolom Harga di jTable dan masuk ke txt_totalHarga
-        double total = 0;
-        for (int i =0; i < jTable1.getRowCount(); i++){
-            double amount = (Integer)jTable1.getValueAt(i, 2);
-            total += amount;
-        }
-        txt_totalHarga.setText("Rp. "+ total);
-        ///
-    }//GEN-LAST:event_btn_bayar1ActionPerformed
     
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_cetakStrukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cetakStrukActionPerformed
         try {
             struk.print();
         } catch (PrinterException ex) {
             Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn_cetakStrukActionPerformed
 
-    private void btn_bayar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bayar2ActionPerformed
+    private void btn_showStrukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_showStrukActionPerformed
         struk_print();
-    }//GEN-LAST:event_btn_bayar2ActionPerformed
+    }//GEN-LAST:event_btn_showStrukActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1231,11 +1246,14 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton EXIT;
     private javax.swing.JLabel LabelJamRealTime;
     private javax.swing.JButton btn_bayar;
-    private javax.swing.JButton btn_bayar1;
-    private javax.swing.JButton btn_bayar2;
+    private javax.swing.JButton btn_cetakStruk;
+    private javax.swing.JButton btn_checkout;
+    private javax.swing.JButton btn_delete;
+    private javax.swing.JButton btn_exit;
+    private javax.swing.JButton btn_reset;
+    private javax.swing.JButton btn_showStruk;
     private javax.swing.JCheckBox cb_Cendol;
     private javax.swing.JCheckBox cb_Hamburger;
     private javax.swing.JCheckBox cb_Paincake;
@@ -1253,10 +1271,6 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
     private javax.swing.JCheckBox cb_sweetPotato;
     private javax.swing.JCheckBox cb_tehManis;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
