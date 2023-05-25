@@ -20,6 +20,10 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import static projectfoodorder.UserProfile.hp_label;
+import static projectfoodorder.UserProfile.nama_label;
+import static projectfoodorder.UserProfile.password_label;
+import static projectfoodorder.UserProfile.username_label;
 
 interface campuran{
     void kembalian();
@@ -56,14 +60,14 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         }
     }
     
+    
     @Override
     public void kode_barang_otomatis(){
         
         try{
-            String sql = "SELECT * FROM datauser WHERE id_user";
             connect = DriverManager.getConnection(url, user,pass);
             stm = connect.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM datatransaksi order by kode_transaksi desc");
+            ResultSet rs = stm.executeQuery("SELECT * FROM datapembelian order by kode_transaksi desc");
             if(rs.next()){
                 String kode = rs.getString("kode_transaksi").substring(3);
                 String AN = "" +(Integer.parseInt(kode)+1);
@@ -1162,6 +1166,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
             double amount = (Integer)jTable1.getValueAt(i, 2);
             total += amount;
         }
+        
         int input_uang = (Integer)Integer.parseInt(txt_inputUang.getText());
         if(txt_inputUang.getText().equals("") || input_uang < total){
             JOptionPane.showMessageDialog(null, "Uang anda tidak mencukupi untuk melakukan transaksi ini");
@@ -1170,12 +1175,31 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                 ///menginput data dari jTable ke database
                 int b = 0;
                 int barisTable = jTable1.getRowCount();
-                String sqlb;
+                String sql, sqla, sqlb;
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 connect = DriverManager.getConnection(url, user,pass);
                 stm = connect.createStatement();
-                
                 PreparedStatement pStatement = null;
+                
+                String userName = username_label.getText();
+                String password = password_label.getText();
+                String cekid = null;
+                
+                sql = "SELECT * FROM datauser WHERE username = '"+userName+"' AND password = '"+password+"'";
+                ResultSet r = stm.executeQuery(sql);
+                while(r.next()){
+                    cekid = r.getString (1);
+                }
+                r.close();
+                stm.close();
+                
+                
+                sqla = "INSERT INTO datapembelian(kode_transaksi, id_user)" + "VALUES (?,?);";
+                pStatement = connect.prepareStatement(sqla);
+                pStatement.setString(1, kode_transaksi);
+                pStatement.setString(2, cekid);
+                pStatement.executeUpdate();
+                
                 for(int a = 0; a <= barisTable; a++){
                     sqlb = "INSERT INTO datatransaksi(kode_transaksi, nama_pesanan, quantity, total_harga)" + "VALUES (?,?,?,?);";
                     

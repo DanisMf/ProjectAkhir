@@ -27,7 +27,7 @@ public class LoginPage extends javax.swing.JFrame{
     public Statement stm;
     String url = "jdbc:mysql://localhost/projectfoodorder";
     String user = "root";
-    String pass = "";
+    String pass = ""; 
     
     public void koneksi(){
         try{
@@ -291,6 +291,7 @@ public class LoginPage extends javax.swing.JFrame{
                 String userName = jUsername.getText();
                 String password = jPassword.getText();
                 
+                String cekid = null;
                 String cekname = null;
                 String cekuser = null;
                 String cekpass = null;
@@ -302,6 +303,7 @@ public class LoginPage extends javax.swing.JFrame{
                 String sql = "SELECT * FROM datauser WHERE username = '"+userName+"' AND password = '"+password+"'";
                 ResultSet r = stm.executeQuery(sql);
                 while(r.next()){
+                    cekid = r.getString (1);
                     cekname = r.getString (2);
                     cekuser = r.getString (3);
                     cekpass = r.getString (4);
