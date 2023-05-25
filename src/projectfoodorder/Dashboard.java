@@ -27,6 +27,7 @@ import static projectfoodorder.UserProfile.username_label;
 import java.awt.Desktop;
 import java.net.URI;
 import java.net.URL;
+import static projectfoodorder.UserProfile.id_akun_label;
 
 
 interface campuran{
@@ -124,8 +125,12 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
             struk.setText(struk.getText() + "\t          DKI Jakarta, Jakarta Selatan, \n");
             struk.setText(struk.getText() + "\t          +086755492822, \n");
             struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
+            struk.setText(struk.getText() + "\t          "+id_akun_label.getText()+" \n");
+            struk.setText(struk.getText() + "\t          "+kode_transaksi+" \n");
+            struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
             struk.setText(struk.getText() + " Iteam                     \tQty \tPrice \n");
             struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
+            
             
             DefaultTableModel df = (DefaultTableModel) jTable1.getModel();
             for (int i = 0; i < jTable1.getRowCount(); i++) {
@@ -134,13 +139,21 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                 String qt = df.getValueAt(i, 1).toString();
                 String prc = df.getValueAt(i, 2).toString();
                 
-                struk.setText(struk.getText() + name+"                     \t"+qt+"\t"+prc+" \n");
-                
+                struk.setText(struk.getText() + name+"                     \t"+qt+"\t"+prc+" \n");   
             }
+            
+            int total = 0;
+            for (int i =0; i < jTable1.getRowCount(); i++){
+                double amount = (Integer)jTable1.getValueAt(i, 2);
+                total += amount;
+            }
+            int x = Integer.parseInt(txt_inputUang.getText());
+            int balance = x - total;
             struk.setText(struk.getText() + "--------------------------------------------------------------------------------\n");
-            struk.setText(struk.getText() + "SubTotal :                     \t"+txt_totalItem.getText()+"\n");
+            struk.setText(struk.getText() + "SubTotal Item :                     \t"+txt_totalItem.getText()+"\n");
+            struk.setText(struk.getText() + "SubTotal Harga :                     \t"+txt_totalHarga.getText()+"\n");
             struk.setText(struk.getText() + "Cash :                     \t"+txt_inputUang.getText()+"\n");
-            struk.setText(struk.getText() + "Ballance :                     \t"+txt_totalHarga.getText()+"\n");
+            struk.setText(struk.getText() + "Ballance :                     \t"+balance+"\n");
             struk.setText(struk.getText() + "================================================\n");
             struk.setText(struk.getText() +"                                Thanks For Your Business...!"+"\n");
             struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
@@ -1302,11 +1315,11 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                     int intBaris = pStatement.executeUpdate();
                     if (intBaris>0) {
                         System.out.println("Berhasil menambahkan data");
+                        JOptionPane.showMessageDialog(null, "Pembelian anda berhasil");
                     } else {
                         System.out.println("Penambahan data gagal");
                     }
                 }
-                JOptionPane.showMessageDialog(null, "Pembelian anda berhasil");
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {

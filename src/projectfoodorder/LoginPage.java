@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import static projectfoodorder.UserProfile.hp_label;
+import static projectfoodorder.UserProfile.id_akun_label;
 import static projectfoodorder.UserProfile.nama_label;
 import static projectfoodorder.UserProfile.password_label;
 import static projectfoodorder.UserProfile.username_label;
@@ -316,6 +317,7 @@ public class LoginPage extends javax.swing.JFrame{
                 username_label.setText(cekuser);
                 password_label.setText(cekpass);
                 hp_label.setText(cekhp);
+                id_akun_label.setText(cekid);
                 
                 if (userName.equals(cekuser) && password.equals(cekpass)){
                     String pesan = "LOGIN BERHASIL";
