@@ -24,10 +24,15 @@ import static projectfoodorder.UserProfile.hp_label;
 import static projectfoodorder.UserProfile.nama_label;
 import static projectfoodorder.UserProfile.password_label;
 import static projectfoodorder.UserProfile.username_label;
+import static projectfoodorder.UserProfile.id_akun_label;
 import java.awt.Desktop;
 import java.net.URI;
 import java.net.URL;
-import static projectfoodorder.UserProfile.id_akun_label;
+
+import daftarMenu.menu;
+import daftarMenu.makanan;
+import daftarMenu.minuman;
+
 
 
 interface campuran{
@@ -42,6 +47,9 @@ interface campuran{
  */
 public class Dashboard extends javax.swing.JFrame implements campuran{
         
+    
+    makanan daftar = new makanan();
+    minuman daftar2 = new minuman();
     
     private int waktumulai = 0;
     
@@ -1301,7 +1309,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                 pStatement.setString(1, kode_transaksi);
                 pStatement.setString(2, cekid);
                 pStatement.executeUpdate();
-                
+               
                 for(int a = 0; a <= barisTable; a++){
                     sqlb = "INSERT INTO datatransaksi(kode_transaksi, nama_pesanan, quantity, total_harga)" + "VALUES (?,?,?,?);";
                     
