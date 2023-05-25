@@ -24,6 +24,10 @@ import static projectfoodorder.UserProfile.hp_label;
 import static projectfoodorder.UserProfile.nama_label;
 import static projectfoodorder.UserProfile.password_label;
 import static projectfoodorder.UserProfile.username_label;
+import java.awt.Desktop;
+import java.net.URI;
+import java.net.URL;
+
 
 interface campuran{
     void kembalian();
@@ -249,7 +253,6 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         jTable1 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
         btn_delete = new javax.swing.JButton();
-        btn_exit = new javax.swing.JButton();
         btn_checkout = new javax.swing.JButton();
         btn_reset = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
@@ -262,6 +265,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         txt_totalHarga = new javax.swing.JLabel();
         txt_totalItem = new javax.swing.JLabel();
         btn_showStruk = new javax.swing.JButton();
+        btn_exit = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -269,6 +273,12 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         btn_cetakStruk = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        jLabel33 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -289,7 +299,8 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         jButton1.setBackground(new java.awt.Color(255, 183, 3));
         jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("PROFILE PAGE");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Asset/user (5).png"))); // NOI18N
+        jButton1.setText("PROFILE");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -299,6 +310,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         jButton2.setBackground(new java.awt.Color(255, 183, 3));
         jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Asset/calculator (1).png"))); // NOI18N
         jButton2.setText("CALCULATOR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,14 +326,12 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(LabelJamRealTime)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LabelJamRealTime)
-                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -734,23 +744,13 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("PESANAN ANDA ");
 
-        btn_delete.setBackground(new java.awt.Color(153, 0, 0));
+        btn_delete.setBackground(new java.awt.Color(188, 0, 0));
         btn_delete.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         btn_delete.setForeground(new java.awt.Color(255, 255, 255));
         btn_delete.setText("DELETE");
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_deleteActionPerformed(evt);
-            }
-        });
-
-        btn_exit.setBackground(new java.awt.Color(255, 0, 0));
-        btn_exit.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
-        btn_exit.setForeground(new java.awt.Color(255, 255, 255));
-        btn_exit.setText("EXIT");
-        btn_exit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_exitActionPerformed(evt);
             }
         });
 
@@ -764,7 +764,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
             }
         });
 
-        btn_reset.setBackground(new java.awt.Color(63, 73, 127));
+        btn_reset.setBackground(new java.awt.Color(74, 86, 149));
         btn_reset.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         btn_reset.setForeground(new java.awt.Color(255, 255, 255));
         btn_reset.setText("RESET");
@@ -783,16 +783,13 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(btn_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(btn_delete, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btn_checkout, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE)
-                            .addComponent(btn_reset, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_delete, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
-                            .addComponent(btn_exit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(btn_checkout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -800,17 +797,15 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addGap(14, 14, 14)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_reset)
-                    .addComponent(btn_delete))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_checkout)
-                    .addComponent(btn_exit))
-                .addGap(61, 61, 61))
+                .addGap(9, 9, 9)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_delete, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_reset, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_checkout)
+                .addContainerGap())
         );
 
         jPanel5.setBackground(new java.awt.Color(18, 103, 130));
@@ -829,7 +824,8 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         jLabel7.setText("TOTAL HARGA");
 
         btn_bayar.setBackground(new java.awt.Color(51, 255, 0));
-        btn_bayar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_bayar.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
+        btn_bayar.setForeground(new java.awt.Color(255, 255, 255));
         btn_bayar.setText("BAYAR");
         btn_bayar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -849,12 +845,23 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         txt_totalItem.setForeground(new java.awt.Color(255, 255, 255));
         txt_totalItem.setText("0");
 
-        btn_showStruk.setBackground(new java.awt.Color(255, 255, 0));
-        btn_showStruk.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_showStruk.setBackground(new java.awt.Color(242, 226, 0));
+        btn_showStruk.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
+        btn_showStruk.setForeground(new java.awt.Color(255, 255, 255));
         btn_showStruk.setText("STRUK");
         btn_showStruk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_showStrukActionPerformed(evt);
+            }
+        });
+
+        btn_exit.setBackground(new java.awt.Color(255, 0, 0));
+        btn_exit.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
+        btn_exit.setForeground(new java.awt.Color(255, 255, 255));
+        btn_exit.setText("EXIT");
+        btn_exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exitActionPerformed(evt);
             }
         });
 
@@ -879,9 +886,10 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                             .addComponent(txt_inputUang, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_totalItem, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn_showStruk, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_bayar, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(btn_showStruk, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(btn_exit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(27, 27, 27))))
         );
         jPanel5Layout.setVerticalGroup(
@@ -889,25 +897,30 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txt_totalItem))
-                .addGap(22, 22, 22)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txt_totalHarga))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel28)
-                .addGap(31, 31, 31))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(txt_totalItem))
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(txt_totalHarga))
+                        .addGap(74, 74, 74))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txt_inputUang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel28))
+                        .addGap(27, 27, 27))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btn_exit, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txt_inputUang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_showStruk, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27))
+                .addComponent(btn_bayar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btn_showStruk, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel7.setBackground(new java.awt.Color(255, 183, 3));
@@ -921,8 +934,9 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         struk.setRows(5);
         jScrollPane3.setViewportView(struk);
 
-        btn_cetakStruk.setBackground(new java.awt.Color(204, 204, 204));
+        btn_cetakStruk.setBackground(new java.awt.Color(242, 100, 25));
         btn_cetakStruk.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btn_cetakStruk.setForeground(new java.awt.Color(255, 255, 255));
         btn_cetakStruk.setText("CETAK STRUK");
         btn_cetakStruk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -950,34 +964,80 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                 .addContainerGap()
                 .addComponent(jLabel29)
                 .addGap(14, 14, 14)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_cetakStruk, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                .addComponent(btn_cetakStruk, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         jPanel8.setBackground(new java.awt.Color(142, 202, 230));
         jPanel8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel30.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel30.setFont(new java.awt.Font("Segoe UI Black", 3, 20)); // NOI18N
         jLabel30.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel30.setText("ABOUT ME");
+        jLabel30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Asset/rocket-lunch.png"))); // NOI18N
+        jLabel30.setText("KELOMPOK PENERBANG ROKET");
+
+        jLabel31.setFont(new java.awt.Font("Segoe UI Black", 3, 20)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel31.setText("ABOUT US");
+
+        jLabel35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Asset/facebook.png"))); // NOI18N
+
+        jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Asset/instagram.png"))); // NOI18N
+        jLabel36.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel36MouseClicked(evt);
+            }
+        });
+
+        jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Asset/twitter.png"))); // NOI18N
+
+        jLabel32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Asset/whatsapp.png"))); // NOI18N
+
+        jLabel33.setFont(new java.awt.Font("Segoe UI Black", 3, 20)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Asset/rocket-lunch.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jLabel30)
+                .addGap(21, 21, 21)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel31)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel35)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel36)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel37)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel32)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel33)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel30)
+                .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel31)
+                .addGap(16, 16, 16)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel35)
+                    .addComponent(jLabel36)
+                    .addComponent(jLabel37)
+                    .addComponent(jLabel32)
+                    .addComponent(jLabel33))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(jLabel30)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -987,7 +1047,8 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -998,10 +1059,8 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1030,9 +1089,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 883, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 892, Short.MAX_VALUE)
         );
 
         pack();
@@ -1286,6 +1343,23 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         new CalculatorPage().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jLabel36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel36MouseClicked
+        // TODO add your handling code here:
+        openInstagram();
+    }//GEN-LAST:event_jLabel36MouseClicked
+    
+         private void openInstagram() {
+            if (Desktop.isDesktopSupported()) {
+        try {
+            Desktop.getDesktop().browse(new URI("https://www.instagram.com/qulhak/"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+   
+
+    
     /**
      * @param args the command line arguments
      */
@@ -1375,6 +1449,12 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

@@ -422,16 +422,16 @@ public class CalculatorPage extends javax.swing.JFrame {
         angkaKedua = Double.parseDouble(tampilan.getText());
         if(operator == "+")
         {result=angkaPertama+angkaKedua;
-            tampilan.setText(Integer.toString((int) result));}
+            tampilan.setText(Double.toString(result));}
         else if(operator == "-")
         {result=angkaPertama-angkaKedua;
-           tampilan.setText(Integer.toString((int) result));}
+           tampilan.setText(Double.toString(result));}
          else if(operator == "/")
         {result=angkaPertama/angkaKedua;
-            tampilan.setText(Integer.toString((int) result));}
+            tampilan.setText(Double.toString(result));}
          else if(operator == "*")
         {result=angkaPertama*angkaKedua;
-            tampilan.setText(Integer.toString((int) result));}
+            tampilan.setText(Double.toString(result));}
     }//GEN-LAST:event_samaDenganActionPerformed
 
     private void resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetActionPerformed
