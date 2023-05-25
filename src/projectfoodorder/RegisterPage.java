@@ -112,8 +112,9 @@ public class RegisterPage extends javax.swing.JFrame{
         jPanel9 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(47, 72, 88));
+        jPanel1.setBackground(new java.awt.Color(2, 48, 71));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -136,8 +137,8 @@ public class RegisterPage extends javax.swing.JFrame{
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Password");
 
-        tombolSignIn.setBackground(new java.awt.Color(252, 202, 70));
-        tombolSignIn.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        tombolSignIn.setBackground(new java.awt.Color(255, 84, 0));
+        tombolSignIn.setFont(new java.awt.Font("Segoe UI Black", 2, 16)); // NOI18N
         tombolSignIn.setForeground(new java.awt.Color(255, 255, 255));
         tombolSignIn.setText("SIGN IN");
         tombolSignIn.addActionListener(new java.awt.event.ActionListener() {
@@ -146,8 +147,8 @@ public class RegisterPage extends javax.swing.JFrame{
             }
         });
 
-        tombolRegist.setBackground(new java.awt.Color(97, 155, 138));
-        tombolRegist.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
+        tombolRegist.setBackground(new java.awt.Color(255, 158, 0));
+        tombolRegist.setFont(new java.awt.Font("Segoe UI Black", 2, 16)); // NOI18N
         tombolRegist.setForeground(new java.awt.Color(255, 255, 255));
         tombolRegist.setText("REGIST");
         tombolRegist.addActionListener(new java.awt.event.ActionListener() {
@@ -274,9 +275,9 @@ public class RegisterPage extends javax.swing.JFrame{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(63, 63, 63)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tombolSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tombolRegist, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tombolRegist, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tombolSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)

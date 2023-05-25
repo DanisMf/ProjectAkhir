@@ -82,6 +82,7 @@ public class UserProfile extends javax.swing.JFrame {
         nama_label4.setBackground(new java.awt.Color(102, 102, 255));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -102,8 +103,6 @@ public class UserProfile extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("SimSun", 1, 14)); // NOI18N
         jLabel3.setText("============================================================================");
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\ACER\\OneDrive\\Dokumen\\NetBeansProjects\\ProjectAkhir-master\\image\\user_profil_21.png")); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Nama                                      :");
@@ -207,6 +206,7 @@ public class UserProfile extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -3,6 +3,7 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -36,7 +37,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="58" green="48" red="2f" type="rgb"/>
+          <Color blue="47" green="30" red="2" type="rgb"/>
         </Property>
       </Properties>
 
@@ -110,9 +111,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jPhoneNumber" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tombolSignIn" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
-                      <Component id="tombolRegist" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="tombolRegist" min="-2" pref="51" max="-2" attributes="0"/>
+                      <Component id="tombolSignIn" min="-2" pref="51" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="53" max="32767" attributes="0"/>
                   <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
@@ -194,10 +195,10 @@
         <Component class="javax.swing.JButton" name="tombolSignIn">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="46" green="ca" red="fc" type="rgb"/>
+              <Color blue="0" green="54" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial Black" size="12" style="1"/>
+              <Font name="Segoe UI Black" size="16" style="2"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -211,10 +212,10 @@
         <Component class="javax.swing.JButton" name="tombolRegist">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="8a" green="9b" red="61" type="rgb"/>
+              <Color blue="0" green="9e" red="ff" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Arial Black" size="12" style="1"/>
+              <Font name="Segoe UI Black" size="16" style="2"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

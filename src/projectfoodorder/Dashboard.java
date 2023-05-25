@@ -183,6 +183,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         jLabel1 = new javax.swing.JLabel();
         LabelJamRealTime = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         cb_Paincake = new javax.swing.JCheckBox();
         cb_chikenBurger = new javax.swing.JCheckBox();
@@ -266,6 +267,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         jLabel30 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(2, 48, 71));
         jPanel1.setPreferredSize(new java.awt.Dimension(1045, 900));
@@ -280,12 +282,23 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         LabelJamRealTime.setForeground(new java.awt.Color(255, 255, 255));
         LabelJamRealTime.setText("Jam: 0:00:00 AM");
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 51));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("My Profile");
+        jButton1.setBackground(new java.awt.Color(255, 183, 3));
+        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("PROFILE PAGE");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setBackground(new java.awt.Color(255, 183, 3));
+        jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("CALCULATOR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -293,22 +306,27 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(LabelJamRealTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LabelJamRealTime)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LabelJamRealTime)
                 .addContainerGap())
@@ -713,7 +731,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         jLabel5.setText("PESANAN ANDA ");
 
         btn_delete.setBackground(new java.awt.Color(153, 0, 0));
-        btn_delete.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btn_delete.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         btn_delete.setForeground(new java.awt.Color(255, 255, 255));
         btn_delete.setText("DELETE");
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
@@ -723,7 +741,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         });
 
         btn_exit.setBackground(new java.awt.Color(255, 0, 0));
-        btn_exit.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btn_exit.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         btn_exit.setForeground(new java.awt.Color(255, 255, 255));
         btn_exit.setText("EXIT");
         btn_exit.addActionListener(new java.awt.event.ActionListener() {
@@ -733,7 +751,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         });
 
         btn_checkout.setBackground(new java.awt.Color(51, 204, 0));
-        btn_checkout.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        btn_checkout.setFont(new java.awt.Font("Segoe UI Black", 1, 22)); // NOI18N
         btn_checkout.setForeground(new java.awt.Color(255, 255, 255));
         btn_checkout.setText("CHECKOUT");
         btn_checkout.addActionListener(new java.awt.event.ActionListener() {
@@ -743,7 +761,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         });
 
         btn_reset.setBackground(new java.awt.Color(63, 73, 127));
-        btn_reset.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btn_reset.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         btn_reset.setForeground(new java.awt.Color(255, 255, 255));
         btn_reset.setText("RESET");
         btn_reset.addActionListener(new java.awt.event.ActionListener() {
@@ -900,7 +918,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         jScrollPane3.setViewportView(struk);
 
         btn_cetakStruk.setBackground(new java.awt.Color(204, 204, 204));
-        btn_cetakStruk.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btn_cetakStruk.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         btn_cetakStruk.setText("CETAK STRUK");
         btn_cetakStruk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1192,7 +1210,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-//        new UserProfile().setVisible(true);
+        new UserProfile().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void btn_cetakStrukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cetakStrukActionPerformed
@@ -1206,6 +1224,11 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
     private void btn_showStrukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_showStrukActionPerformed
         struk_print();
     }//GEN-LAST:event_btn_showStrukActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        new CalculatorPage().setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1271,6 +1294,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
     private javax.swing.JCheckBox cb_sweetPotato;
     private javax.swing.JCheckBox cb_tehManis;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
