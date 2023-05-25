@@ -1149,6 +1149,22 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
     private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
         // TODO add your handling code here:
         KosongkanForm();
+        ////menambil nilai penjumlahan dari kolom qty di jTable dan masuk ke txt_totalItem
+        int total1 = 0;
+        for (int i =0; i < jTable1.getRowCount(); i++){
+            int amount = (Integer)jTable1.getValueAt(i, 1);
+            total1 += amount;
+        }
+        txt_totalItem.setText(""+total1);
+        ///
+        ////menambil nilai penjumlahan dari kolom Harga di jTable dan masuk ke txt_totalHarga
+        double total = 0;
+        for (int i =0; i < jTable1.getRowCount(); i++){
+            double amount = (Integer)jTable1.getValueAt(i, 2);
+            total += amount;
+        }
+        txt_totalHarga.setText("Rp. "+ total);
+        ///
     }//GEN-LAST:event_btn_resetActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
@@ -1157,6 +1173,22 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         int b = a + 1;
         DefaultTableModel dm = (DefaultTableModel)jTable1.getModel();
         dm.removeRow(a);
+        ////menambil nilai penjumlahan dari kolom qty di jTable dan masuk ke txt_totalItem
+        int total1 = 0;
+        for (int i =0; i < jTable1.getRowCount(); i++){
+            int amount = (Integer)jTable1.getValueAt(i, 1);
+            total1 += amount;
+        }
+        txt_totalItem.setText(""+total1);
+        ///
+        ////menambil nilai penjumlahan dari kolom Harga di jTable dan masuk ke txt_totalHarga
+        double total = 0;
+        for (int i =0; i < jTable1.getRowCount(); i++){
+            double amount = (Integer)jTable1.getValueAt(i, 2);
+            total += amount;
+        }
+        txt_totalHarga.setText("Rp. "+ total);
+        ///
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_bayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bayarActionPerformed
