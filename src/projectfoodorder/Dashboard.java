@@ -32,6 +32,7 @@ import java.net.URL;
 import daftarMenu.menu;
 import daftarMenu.makanan;
 import daftarMenu.minuman;
+import java.awt.Color;
 
 
 
@@ -61,6 +62,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
     
     String kode_transaksi = "";
     String cek_id = "";
+    
     
     public void koneksi(){
         try{
@@ -276,6 +278,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         btn_delete = new javax.swing.JButton();
         btn_checkout = new javax.swing.JButton();
         btn_reset = new javax.swing.JButton();
+        btn_status = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -285,7 +288,6 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         txt_inputUang = new javax.swing.JTextField();
         txt_totalHarga = new javax.swing.JLabel();
         txt_totalItem = new javax.swing.JLabel();
-        btn_showStruk = new javax.swing.JButton();
         btn_exit = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
@@ -795,6 +797,11 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
             }
         });
 
+        btn_status.setBackground(new java.awt.Color(0, 102, 255));
+        btn_status.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        btn_status.setForeground(new java.awt.Color(255, 255, 255));
+        btn_status.setText("STATUS PEMBAYARAN");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -802,7 +809,8 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                    .addComponent(btn_checkout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(btn_reset, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
@@ -810,7 +818,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(btn_checkout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_status, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -819,13 +827,15 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                 .addContainerGap()
                 .addComponent(jLabel5)
                 .addGap(9, 9, 9)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_delete, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_reset, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_checkout)
+                    .addComponent(btn_delete)
+                    .addComponent(btn_reset))
+                .addGap(18, 18, 18)
+                .addComponent(btn_checkout, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(btn_status, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -870,6 +880,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         btn_showStruk.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
         btn_showStruk.setForeground(new java.awt.Color(255, 255, 255));
         btn_showStruk.setText("STRUK");
+        btn_showStruk.setEnabled(false);
         btn_showStruk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_showStrukActionPerformed(evt);
@@ -1222,6 +1233,9 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         txt_totalHarga.setText("Rp. "+ total);
         ///
         
+        btn_status.setText("BELUM DIBAYAR");
+        btn_status.setBackground(Color.red);
+        
     }//GEN-LAST:event_btn_checkoutActionPerformed
 
     private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
@@ -1244,6 +1258,8 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         txt_totalHarga.setText("Rp. "+ total);
         ///
         txt_inputUang.setText("");
+        btn_status.setText("STATUS PEMBAYARAN");
+        btn_status.setBackground(Color.blue);
     }//GEN-LAST:event_btn_resetActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
@@ -1268,6 +1284,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         }
         txt_totalHarga.setText("Rp. "+ total);
         ///
+        
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_bayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bayarActionPerformed
@@ -1289,6 +1306,9 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         else{
             JOptionPane.showMessageDialog(null, "Selamat pembelian anda berhasil silahkan cetak struk");
             try {
+                btn_showStruk.setEnabled(true);
+                btn_status.setText("LUNAS");
+                btn_status.setBackground(Color.green);
                 ///menginput data dari jTable ke database
                 int b = 0;
                 int barisTable = jTable1.getRowCount();
@@ -1335,6 +1355,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
                         System.out.println("Penambahan data gagal");
                     }
                 }
+                btn_showStruk.setEnabled(true);
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(Dashboard.class.getName()).log(Level.SEVERE, null, ex);
             } catch (SQLException ex) {
@@ -1363,8 +1384,10 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
     }//GEN-LAST:event_btn_cetakStrukActionPerformed
 
     private void btn_showStrukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_showStrukActionPerformed
+
         struk_print();
         txt_inputUang.setText("");
+        btn_showStruk.setEnabled(false);
     }//GEN-LAST:event_btn_showStrukActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -1435,7 +1458,8 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
     private javax.swing.JButton btn_delete;
     private javax.swing.JButton btn_exit;
     private javax.swing.JButton btn_reset;
-    private javax.swing.JButton btn_showStruk;
+    public static final javax.swing.JButton btn_showStruk = new javax.swing.JButton();
+    private javax.swing.JButton btn_status;
     private javax.swing.JCheckBox cb_Cendol;
     private javax.swing.JCheckBox cb_Hamburger;
     private javax.swing.JCheckBox cb_Paincake;
