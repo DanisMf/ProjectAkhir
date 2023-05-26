@@ -133,8 +133,8 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
             struk.setText(struk.getText() + "\t          DKI Jakarta, Jakarta Selatan, \n");
             struk.setText(struk.getText() + "\t          +086755492822, \n");
             struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
-            struk.setText(struk.getText() + "\t          "+id_akun_label.getText()+" \n");
-            struk.setText(struk.getText() + "\t          "+kode_transaksi+" \n");
+            struk.setText(struk.getText() + "\tid pembeli:       "+id_akun_label.getText()+" \n");
+            struk.setText(struk.getText() + "\tkode transaksi        "+kode_transaksi+" \n");
             struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
             struk.setText(struk.getText() + " Iteam                     \tQty \tPrice \n");
             struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
@@ -1243,6 +1243,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         }
         txt_totalHarga.setText("Rp. "+ total);
         ///
+        txt_inputUang.setText("");
     }//GEN-LAST:event_btn_resetActionPerformed
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
@@ -1280,7 +1281,13 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         int input_uang = (Integer)Integer.parseInt(txt_inputUang.getText());
         if(txt_inputUang.getText().equals("") || input_uang < total){
             JOptionPane.showMessageDialog(null, "Uang anda tidak mencukupi untuk melakukan transaksi ini");
-        }else{
+//        }else if(txt_inputUang.getText().isEmpty()  || input_uang == 0){
+//            JOptionPane.showMessageDialog(null, "Uang anda tidak mencukupi untuk melakukan transaksi ini");
+        }else if(txt_inputUang.getText().isEmpty()){
+//            JOptionPane.showMessageDialog(null, "Uang anda tidak mencukupi untuk melakukan transaksi ini");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Selamat pembelian anda berhasil silahkan cetak struk");
             try {
                 ///menginput data dari jTable ke database
                 int b = 0;
@@ -1357,6 +1364,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
 
     private void btn_showStrukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_showStrukActionPerformed
         struk_print();
+        txt_inputUang.setText("");
     }//GEN-LAST:event_btn_showStrukActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
