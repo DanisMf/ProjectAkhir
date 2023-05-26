@@ -9,31 +9,20 @@ package daftarMenu;
  * @author ACER
  */
 
-interface method{
-    String getNama();
-    void setNama(String a);
-    int getHarga();
-    void setHarga(int a);
-}
-
-public class makanan extends menu implements method{
+public class makanan extends menu{
     
     private String nama;
     private int harga;
     
-    @Override
     public String getNama(){
         return nama;
     }
-    @Override
     public void setNama(String nama){
         this.nama = nama;
     }
-    @Override
     public int getHarga(){
         return harga;
     }
-    @Override
     public void setHarga(int harga){
         this.harga = harga;
     }

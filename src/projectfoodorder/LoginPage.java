@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import static projectfoodorder.UserProfile.hp_label;
 import static projectfoodorder.UserProfile.id_akun_label;
@@ -314,9 +315,6 @@ public class LoginPage extends javax.swing.JFrame{
                 }
                 r.close();
                 stm.close();
-                
-                judul_label.setText(cekname);
-                judul_id_label.setText(cekid);
                 
                 nama_label.setText(cekname);
                 username_label.setText(cekuser);
