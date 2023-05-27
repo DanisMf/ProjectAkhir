@@ -165,8 +165,8 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
             struk.setText(struk.getText() + "--------------------------------------------------------------------------------\n");
             struk.setText(struk.getText() + "SubTotal Item :                     \t"+txt_totalItem.getText()+"\n");
             struk.setText(struk.getText() + "SubTotal Harga :                     \t"+txt_totalHarga.getText()+"\n");
-            struk.setText(struk.getText() + "Cash :                     \t"+txt_inputUang.getText()+"\n");
-            struk.setText(struk.getText() + "Ballance :                     \t"+balance+"\n");
+            struk.setText(struk.getText() + "Cash :                     \tRp."+txt_inputUang.getText()+"\n");
+            struk.setText(struk.getText() + "Ballance :                     \tRp."+balance+"\n");
             struk.setText(struk.getText() + "================================================\n");
             struk.setText(struk.getText() +"                                Thanks For Your Business...!"+"\n");
             struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
