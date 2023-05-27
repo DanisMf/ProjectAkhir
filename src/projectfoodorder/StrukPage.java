@@ -10,6 +10,7 @@ import java.lang.System.Logger.Level;
 import javax.swing.table.DefaultTableModel;
 import static projectfoodorder.Dashboard.baris;
 import static projectfoodorder.Dashboard.kode_transaksi;
+import static projectfoodorder.Dashboard.struk_print;
 import static projectfoodorder.Dashboard.txt_inputUang;
 import static projectfoodorder.Dashboard.txt_totalHarga;
 import static projectfoodorder.Dashboard.txt_totalItem;
@@ -26,50 +27,9 @@ public class StrukPage extends javax.swing.JFrame {
      */
     public StrukPage() {
         initComponents();
+        struk_print();
     }
     
-    public void struk_print(){
-        
-            struk.setText("                                       The Food Order APP \n");
-            struk.setText(struk.getText() + "\t          Blok 4A/ Senopati, \n");
-            struk.setText(struk.getText() + "\t          DKI Jakarta, Jakarta Selatan, \n");
-            struk.setText(struk.getText() + "\t          +086755492822, \n");
-            struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
-            struk.setText(struk.getText() + "\tid pembeli:       "+id_akun_label.getText()+" \n");
-            struk.setText(struk.getText() + "\tkode transaksi        "+kode_transaksi+" \n");
-            struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
-            struk.setText(struk.getText() + " Iteam                     \tQty \tPrice \n");
-            struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
-            
-            DefaultTableModel df = (DefaultTableModel) jTable1.getModel();
-            for (int i = 0; i <= baris; i++) {
-                
-                String name = df.getValueAt(i, 0).toString();
-                String qt = df.getValueAt(i, 1).toString();
-                String prc = df.getValueAt(i, 2).toString();
-                
-                struk.setText(struk.getText() + name+"                     \t"+qt+"\t"+prc+" \n");   
-            }
-            
-            int total = 0;
-            for (int i =0; i < baris; i++){
-                double amount = (Integer)df.getValueAt(i, 2);
-                total += amount;
-            }
-            int x = Integer.parseInt(txt_inputUang.getText());
-            int balance = x - total;
-            struk.setText(struk.getText() + "--------------------------------------------------------------------------------\n");
-            struk.setText(struk.getText() + "SubTotal Item :                     \t"+txt_totalItem.getText()+"\n");
-            struk.setText(struk.getText() + "SubTotal Harga :                     \t"+txt_totalHarga.getText()+"\n");
-            struk.setText(struk.getText() + "Cash :                     \t"+txt_inputUang.getText()+"\n");
-            struk.setText(struk.getText() + "Ballance :                     \t"+balance+"\n");
-            struk.setText(struk.getText() + "================================================\n");
-            struk.setText(struk.getText() +"                                Thanks For Your Business...!"+"\n");
-            struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
-            struk.setText(struk.getText() +"                         Software by Kelompok penerbang roket"+"\n");
-            struk.setText(struk.getText() +"                                                     Original"+"\n");
-            
- }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,7 +43,6 @@ public class StrukPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        struk = new javax.swing.JTextArea();
         btn_cetakStruk = new javax.swing.JButton();
         jLabel29 = new javax.swing.JLabel();
 
@@ -119,11 +78,11 @@ public class StrukPage extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
                     .addComponent(btn_cetakStruk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jLabel29)
-                        .addGap(0, 94, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -219,6 +178,6 @@ public class StrukPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea struk;
+    public static final javax.swing.JTextArea struk = new javax.swing.JTextArea();
     // End of variables declaration//GEN-END:variables
 }

@@ -4,7 +4,6 @@
  */
 package projectfoodorder;
 
-import com.mysql.cj.protocol.Resultset;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -67,7 +66,7 @@ public class RegisterPage extends javax.swing.JFrame{
     
     public static Connection connect;
     public static Statement stm;
-    private Resultset Rs;
+    private ResultSet Rs;
     private String sql = "";
     
     /**

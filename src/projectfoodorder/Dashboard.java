@@ -4,7 +4,6 @@
  */
 package projectfoodorder;
 
-import com.mysql.cj.protocol.Resultset;
 import java.awt.print.PrinterException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -33,6 +32,7 @@ import daftarMenu.menu;
 import daftarMenu.makanan;
 import daftarMenu.minuman;
 import java.awt.Color;
+import static projectfoodorder.StrukPage.struk;
 
 
 
@@ -129,51 +129,51 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         }.start();
     }
     
-//    
-//    
-//    public void struk_print(){
-//        
-//            struk.setText("                                       The Food Order APP \n");
-//            struk.setText(struk.getText() + "\t          Blok 4A/ Senopati, \n");
-//            struk.setText(struk.getText() + "\t          DKI Jakarta, Jakarta Selatan, \n");
-//            struk.setText(struk.getText() + "\t          +086755492822, \n");
-//            struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
-//            struk.setText(struk.getText() + "\tid pembeli:       "+id_akun_label.getText()+" \n");
-//            struk.setText(struk.getText() + "\tkode transaksi        "+kode_transaksi+" \n");
-//            struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
-//            struk.setText(struk.getText() + " Iteam                     \tQty \tPrice \n");
-//            struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
-//            
-//            
-//            DefaultTableModel df = (DefaultTableModel) jTable1.getModel();
-//            for (int i = 0; i < jTable1.getRowCount(); i++) {
-//                
-//                String name = df.getValueAt(i, 0).toString();
-//                String qt = df.getValueAt(i, 1).toString();
-//                String prc = df.getValueAt(i, 2).toString();
-//                
-//                struk.setText(struk.getText() + name+"                     \t"+qt+"\t"+prc+" \n");   
-//            }
-//            
-//            int total = 0;
-//            for (int i =0; i < jTable1.getRowCount(); i++){
-//                double amount = (Integer)jTable1.getValueAt(i, 2);
-//                total += amount;
-//            }
-//            int x = Integer.parseInt(txt_inputUang.getText());
-//            int balance = x - total;
-//            struk.setText(struk.getText() + "--------------------------------------------------------------------------------\n");
-//            struk.setText(struk.getText() + "SubTotal Item :                     \t"+txt_totalItem.getText()+"\n");
-//            struk.setText(struk.getText() + "SubTotal Harga :                     \t"+txt_totalHarga.getText()+"\n");
-//            struk.setText(struk.getText() + "Cash :                     \t"+txt_inputUang.getText()+"\n");
-//            struk.setText(struk.getText() + "Ballance :                     \t"+balance+"\n");
-//            struk.setText(struk.getText() + "================================================\n");
-//            struk.setText(struk.getText() +"                                Thanks For Your Business...!"+"\n");
-//            struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
-//            struk.setText(struk.getText() +"                         Software by Kelompok penerbang roket"+"\n");
-//            struk.setText(struk.getText() +"                                                     Original"+"\n");
-//            
-// }
+    
+    
+    public static void struk_print(){
+        
+            struk.setText("                                       The Food Order APP \n");
+            struk.setText(struk.getText() + "\t          Blok 4A/ Senopati, \n");
+            struk.setText(struk.getText() + "\t          DKI Jakarta, Jakarta Selatan, \n");
+            struk.setText(struk.getText() + "\t          +086755492822, \n");
+            struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
+            struk.setText(struk.getText() + "\tid pembeli:       "+id_akun_label.getText()+" \n");
+            struk.setText(struk.getText() + "\tkode transaksi        "+kode_transaksi+" \n");
+            struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
+            struk.setText(struk.getText() + " Iteam                     \tQty \tPrice \n");
+            struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
+            
+            
+            DefaultTableModel df = (DefaultTableModel) jTable1.getModel();
+            for (int i = 0; i < jTable1.getRowCount(); i++) {
+                
+                String name = df.getValueAt(i, 0).toString();
+                String qt = df.getValueAt(i, 1).toString();
+                String prc = df.getValueAt(i, 2).toString();
+                
+                struk.setText(struk.getText() + name+"                     \t"+qt+"\t"+prc+" \n");   
+            }
+            
+            int total = 0;
+            for (int i =0; i < jTable1.getRowCount(); i++){
+                double amount = (Integer)jTable1.getValueAt(i, 2);
+                total += amount;
+            }
+            int x = Integer.parseInt(txt_inputUang.getText());
+            int balance = x - total;
+            struk.setText(struk.getText() + "--------------------------------------------------------------------------------\n");
+            struk.setText(struk.getText() + "SubTotal Item :                     \t"+txt_totalItem.getText()+"\n");
+            struk.setText(struk.getText() + "SubTotal Harga :                     \t"+txt_totalHarga.getText()+"\n");
+            struk.setText(struk.getText() + "Cash :                     \t"+txt_inputUang.getText()+"\n");
+            struk.setText(struk.getText() + "Ballance :                     \t"+balance+"\n");
+            struk.setText(struk.getText() + "================================================\n");
+            struk.setText(struk.getText() +"                                Thanks For Your Business...!"+"\n");
+            struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
+            struk.setText(struk.getText() +"                         Software by Kelompok penerbang roket"+"\n");
+            struk.setText(struk.getText() +"                                                     Original"+"\n");
+            
+ }
 
     
     @Override
