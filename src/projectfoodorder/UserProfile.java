@@ -23,7 +23,9 @@ import javax.swing.JOptionPane;
 
 
 public class UserProfile extends javax.swing.JFrame {
-
+    
+    String nama_variable;
+    String nama_barang;
     /** Creates new form UserProfile */
     
     public Connection connect;
