@@ -50,8 +50,9 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         
     
     public static int baris;
-    makanan daftar = new makanan();
-    minuman daftar2 = new minuman();
+    menu menu;
+    makanan makan;
+    minuman minum;
     
     private int waktumulai = 0;
     
@@ -1084,42 +1085,50 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         if(cb_Paincake.isSelected() && (Integer)sp_Paincake.getValue()>0){
-            model.addRow(new Object[]{cb_Paincake.getText(), (Integer)sp_Paincake.getValue(), (Integer)sp_Paincake.getValue()*15000});
+            makan = new makanan(cb_Paincake.getText(), (Integer)sp_Paincake.getValue(),(Integer)sp_Paincake.getValue()*15000);
+            model.addRow(new Object[]{makan.getNama(), makan.getJumlah(), makan.getHarga()});
             cb_Paincake.setSelected(false);
             sp_Paincake.setValue(0);
         }
         if(cb_chikenNuggets.isSelected() && (Integer)sp_chikenNuggets.getValue()>0){
-            model.addRow(new Object[]{cb_chikenNuggets.getText(), (Integer)sp_chikenNuggets.getValue(), (Integer)sp_chikenNuggets.getValue()*15000});
+            makan = new makanan(cb_chikenNuggets.getText(), (Integer)sp_chikenNuggets.getValue(), (Integer)sp_chikenNuggets.getValue()*15000);
+            model.addRow(new Object[]{makan.getNama(), makan.getJumlah(), makan.getHarga()});
             cb_chikenNuggets.setSelected(false);
             sp_chikenNuggets.setValue(0);
         }
         if(cb_chikenBurger.isSelected() && (Integer)sp_chikenBurger.getValue()>0){
-            model.addRow(new Object[]{cb_chikenBurger.getText(), (Integer)sp_chikenBurger.getValue(), (Integer)sp_chikenBurger.getValue()*20000});
+            makan = new makanan(cb_chikenBurger.getText(), (Integer)sp_chikenBurger.getValue(), (Integer)sp_chikenBurger.getValue()*20000);
+            model.addRow(new Object[]{makan.getNama(), makan.getJumlah(), makan.getHarga()});
             cb_chikenBurger.setSelected(false);
             sp_chikenBurger.setValue(0);
         }
         if(cb_cheeseFries.isSelected() && (Integer)sp_cheeseFries.getValue()>0){
-            model.addRow(new Object[]{cb_cheeseFries.getText(), (Integer)sp_cheeseFries.getValue(), (Integer)sp_cheeseFries.getValue()*15000});
+            makan = new makanan(cb_cheeseFries.getText(), (Integer)sp_cheeseFries.getValue(), (Integer)sp_cheeseFries.getValue()*15000);
+            model.addRow(new Object[]{makan.getNama(), makan.getJumlah(), makan.getHarga()});
             cb_cheeseFries.setSelected(false);
             sp_cheeseFries.setValue(0);
         }
         if(cb_sweetPotato.isSelected() && (Integer)sp_sweetPotato.getValue()>0){
-            model.addRow(new Object[]{cb_sweetPotato.getText(), (Integer)sp_sweetPotato.getValue(), (Integer)sp_sweetPotato.getValue()*15000});
+            makan = new makanan(cb_sweetPotato.getText(), (Integer)sp_sweetPotato.getValue(), (Integer)sp_sweetPotato.getValue()*15000);
+            model.addRow(new Object[]{makan.getNama(), makan.getJumlah(), makan.getHarga()});
             cb_sweetPotato.setSelected(false);
             sp_sweetPotato.setValue(0);
         }
         if(cb_pepperoniPizza.isSelected() && (Integer)sp_pepperoniPizza.getValue()>0){
+            makan = new makanan(cb_pepperoniPizza.getText(), (Integer)sp_pepperoniPizza.getValue(), (Integer)sp_pepperoniPizza.getValue()*30000);
             model.addRow(new Object[]{cb_pepperoniPizza.getText(), (Integer)sp_pepperoniPizza.getValue(), (Integer)sp_pepperoniPizza.getValue()*30000});
             cb_pepperoniPizza.setSelected(false);
             sp_pepperoniPizza.setValue(0);
         }
         if(cb_Hamburger.isSelected() && (Integer)sp_Hamburger.getValue()>0){
-            model.addRow(new Object[]{cb_Hamburger.getText(), (Integer)sp_Hamburger.getValue(), (Integer)sp_Hamburger.getValue()*25000});
+            makan = new makanan(cb_Hamburger.getText(), (Integer)sp_Hamburger.getValue(), (Integer)sp_Hamburger.getValue()*25000);
+            model.addRow(new Object[]{makan.getNama(), makan.getJumlah(), makan.getHarga()});
             cb_Hamburger.setSelected(false);
             sp_Hamburger.setValue(0);
         }
         if(cb_creamSoup.isSelected() && (Integer)sp_creamSoup.getValue()>0){
-            model.addRow(new Object[]{cb_creamSoup.getText(), (Integer)sp_creamSoup.getValue(), (Integer)sp_creamSoup.getValue()*12000});
+            makan = new makanan(cb_creamSoup.getText(), (Integer)sp_creamSoup.getValue(), (Integer)sp_creamSoup.getValue()*12000);
+            model.addRow(new Object[]{makan.getNama(), makan.getJumlah(), makan.getHarga()});
             cb_creamSoup.setSelected(false);
             sp_creamSoup.setValue(0);
         }
@@ -1127,42 +1136,50 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
         
         ////checkout pesanan minuman
         if(cb_esCampur.isSelected() && (Integer)sp_esCampur.getValue()>0){
-            model.addRow(new Object[]{cb_esCampur.getText(), (Integer)sp_esCampur.getValue(), (Integer)sp_esCampur.getValue()*10000});
+            minum = new minuman(cb_esCampur.getText(), (Integer)sp_esCampur.getValue(), (Integer)sp_esCampur.getValue()*10000);
+            model.addRow(new Object[]{minum.getNama(), minum.getJumlah(), minum.getHarga()});
             cb_esCampur.setSelected(false);
             sp_esCampur.setValue(0);
         }
         if(cb_esDoger.isSelected() && (Integer)sp_esDoger.getValue()>0){
-            model.addRow(new Object[]{cb_esDoger.getText(), (Integer)sp_esDoger.getValue(), (Integer)sp_esDoger.getValue()*10000});
+            minum = new minuman(cb_esDoger.getText(), (Integer)sp_esDoger.getValue(), (Integer)sp_esDoger.getValue()*10000);
+            model.addRow(new Object[]{minum.getNama(), minum.getJumlah(), minum.getHarga()});
             cb_esDoger.setSelected(false);
             sp_esDoger.setValue(0);
         }
         if(cb_Cendol.isSelected() && (Integer)sp_Cendol.getValue()>0){
-            model.addRow(new Object[]{cb_Cendol.getText(), (Integer)sp_Cendol.getValue(), (Integer)sp_Cendol.getValue()*10000});
+            minum = new minuman(cb_Cendol.getText(), (Integer)sp_Cendol.getValue(), (Integer)sp_Cendol.getValue()*10000);
+            model.addRow(new Object[]{minum.getNama(), minum.getJumlah(), minum.getHarga()});
             cb_Cendol.setSelected(false);
             sp_Cendol.setValue(0);
         }
         if(cb_kelapaMuda.isSelected() && (Integer)sp_kelapaMuda.getValue()>0){
-            model.addRow(new Object[]{cb_kelapaMuda.getText(), (Integer)sp_kelapaMuda.getValue(), (Integer)sp_kelapaMuda.getValue()*10000});
+            minum = new minuman(cb_kelapaMuda.getText(), (Integer)sp_kelapaMuda.getValue(), (Integer)sp_kelapaMuda.getValue()*10000);
+            model.addRow(new Object[]{minum.getNama(), minum.getJumlah(), minum.getHarga()});
             cb_kelapaMuda.setSelected(false);
             sp_kelapaMuda.setValue(0);
         }
         if(cb_airMineral.isSelected() && (Integer)sp_airMineral.getValue()>0){
-            model.addRow(new Object[]{cb_airMineral.getText(), (Integer)sp_airMineral.getValue(), (Integer)sp_airMineral.getValue()*5000});
+            minum = new minuman(cb_airMineral.getText(), (Integer)sp_airMineral.getValue(), (Integer)sp_airMineral.getValue()*5000);
+            model.addRow(new Object[]{minum.getNama(), minum.getJumlah(), minum.getHarga()});
             cb_airMineral.setSelected(false);
             sp_airMineral.setValue(0);
         }
         if(cb_tehManis.isSelected() && (Integer)sp_tehManis.getValue()>0){
-            model.addRow(new Object[]{cb_tehManis.getText(), (Integer)sp_tehManis.getValue(), (Integer)sp_tehManis.getValue()*5000});
+            minum = new minuman(cb_tehManis.getText(), (Integer)sp_tehManis.getValue(), (Integer)sp_tehManis.getValue()*5000);
+            model.addRow(new Object[]{minum.getNama(), minum.getJumlah(), minum.getHarga()});
             cb_tehManis.setSelected(false);
             sp_tehManis.setValue(0);
         }
         if(cb_podeng.isSelected() && (Integer)sp_podeng.getValue()>0){
-            model.addRow(new Object[]{cb_podeng.getText(), (Integer)sp_podeng.getValue(), (Integer)sp_podeng.getValue()*5000});
+            minum = new minuman(cb_podeng.getText(), (Integer)sp_podeng.getValue(), (Integer)sp_podeng.getValue()*5000);
+            model.addRow(new Object[]{minum.getNama(), minum.getJumlah(), minum.getHarga()});
             cb_podeng.setSelected(false);
             sp_podeng.setValue(0);
         }
         if(cb_jeruk.isSelected() && (Integer)sp_jeruk.getValue()>0){
-            model.addRow(new Object[]{cb_jeruk.getText(), (Integer)sp_jeruk.getValue(), (Integer)sp_jeruk.getValue()*5000});
+            minum = new minuman(cb_jeruk.getText(), (Integer)sp_jeruk.getValue(), (Integer)sp_jeruk.getValue()*5000);
+            model.addRow(new Object[]{minum.getNama(), minum.getJumlah(), minum.getHarga()});
             cb_jeruk.setSelected(false);
             sp_jeruk.setValue(0);
         }
