@@ -5,8 +5,10 @@
 package daftarMenu;
 
 /**
- *
- * @author ACER
+ * class makanan merupakan subkelas dari class menu yang merepresentasikan sebuah makanan.
+ * makanan memiliki atribut nama, jumlah, dan harga.
+ * 
+ * @author 
  */
 
 public class makanan extends menu{
@@ -18,6 +20,15 @@ public class makanan extends menu{
     //Constructor adalah method khusus yang akan dieksekusi/dipanggil pada saat instansiasi objek menggunakan operator new.
     //Pada umumnya, constructor berisi inisialisasi instance variable dari objek pada suatu class.
     
+    /**
+     * Konstruktor untuk membuat objek makanan dengan jenis, nama, jumlah, dan harga yang ditentukan.
+     * 
+     * @param jenis  jenis makanan
+     * @param nama   nama makanan
+     * @param jumlah jumlah makanan
+     * @param harga  harga makanan
+     */
+    
     public makanan(String jenis, String nama, int jumlah, int harga){
         super(jenis);
         this.nama = nama;
@@ -25,6 +36,12 @@ public class makanan extends menu{
         this.harga = harga;
     }
     
+    /**
+     * method setter & getter dari class makanan
+     * @return 
+     */
+    
+    //mengoverride dari parent class
     @Override
     public String getJenis(){
         return jenis;

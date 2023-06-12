@@ -427,7 +427,7 @@ public class UserProfile extends javax.swing.JFrame {
         try {
             koneksi();
             connect = DriverManager.getConnection(url, user,pass);
-            String sql = "DELETE FROM datauser WHERE id_user = '"+id_akun_label.getText()+"'";
+            String sql = "DELETE FROM datauser WHERE id_user = '"+id_akun_label.getText()+"CASCADE'";
             PreparedStatement stat = connect.prepareStatement(sql);
             stat.execute();
             JOptionPane.showMessageDialog(null, "Menghapus data berhasil", "INFORMASI", JOptionPane.INFORMATION_MESSAGE);
@@ -436,6 +436,7 @@ public class UserProfile extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Menghapus data gagal", "INFORMASI", JOptionPane.INFORMATION_MESSAGE);
             Logger.getLogger(UserProfile.class.getName()).log(Level.SEVERE, null, ex);
         }
+        this.dispose();
         
     }//GEN-LAST:event_btn_deleteActionPerformed
 
