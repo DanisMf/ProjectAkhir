@@ -15,7 +15,8 @@ public class makanan extends menu{
     private int jumlah;
     private int harga;
     
-    public makanan(String nama, int jumlah, int harga){
+    public makanan(String jenis, String nama, int jumlah, int harga){
+        super(jenis);
         this.nama = nama;
         this.jumlah = jumlah;
         this.harga = harga;

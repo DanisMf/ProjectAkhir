@@ -10,7 +10,12 @@ package daftarMenu;
  */
 public abstract class menu {
     
-    private String jenis;
+    String jenis;
+    
+    public menu(String jenis){
+        this.jenis = jenis;
+    }
+    
     
     public String getJenis(){
         return jenis;
