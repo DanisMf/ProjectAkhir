@@ -40,14 +40,13 @@ import daftarMenu.minuman;
 interface campuran{
     void kembalian();
     void KosongkanForm();
-    void kode_barang_otomatis();
 }
 
 /**
  *
  * @author DELL
  */
-public class Dashboard extends javax.swing.JFrame implements campuran{
+public class Dashboard extends javax.swing.JFrame implements campuran, method{
         
     
     public static int baris;
@@ -66,7 +65,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran{
      public static String  kode_transaksi = "";
     String cek_id = "";
     
-    
+    @Override
     public void koneksi(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");

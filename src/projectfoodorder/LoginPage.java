@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import static projectfoodorder.RegisterPage.id_user;
 import static projectfoodorder.UserProfile.hp_label;
 import static projectfoodorder.UserProfile.id_akun_label;
 import static projectfoodorder.UserProfile.judul_id_label;
@@ -20,6 +21,9 @@ import static projectfoodorder.UserProfile.judul_label;
 import static projectfoodorder.UserProfile.nama_label;
 import static projectfoodorder.UserProfile.password_label;
 import static projectfoodorder.UserProfile.username_label;
+import user.profil;
+
+import user.profil_login;
 
 /**
  *
@@ -32,6 +36,8 @@ public class LoginPage extends javax.swing.JFrame{
     String url = "jdbc:mysql://localhost/projectfoodorder";
     String user = "root";
     String pass = ""; 
+    
+    profil_login login;
     
     public void koneksi(){
         try{
@@ -402,4 +408,5 @@ public class LoginPage extends javax.swing.JFrame{
     private javax.swing.JCheckBox jShowPasswrod;
     private javax.swing.JTextField jUsername;
     // End of variables declaration//GEN-END:variables
+
 }
