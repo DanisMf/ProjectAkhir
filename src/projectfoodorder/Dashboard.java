@@ -139,7 +139,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran, method{
             struk.setText(struk.getText() + "\t          DKI Jakarta, Jakarta Selatan, \n");
             struk.setText(struk.getText() + "\t          +086755492822, \n");
             struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
-            struk.setText(struk.getText() + "\tid pembeli:       "+id_akun_label.getText()+" \n");
+            struk.setText(struk.getText() + "\tid user:       "+id_akun_label.getText()+" \n");
             struk.setText(struk.getText() + "\tkode transaksi        "+kode_transaksi+" \n");
             struk.setText(struk.getText() + "-------------------------------------------------------------------------------\n");
             struk.setText(struk.getText() + " Iteam                     \tQty \tPrice \n");
