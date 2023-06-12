@@ -28,7 +28,7 @@ public class minuman extends menu{
         this.nama = nama;
     }
     public int getJumlah(){
-        return harga;
+        return jumlah;
     }
     public void setJumlah(int jumlah){
         this.jumlah = jumlah;
