@@ -15,8 +15,6 @@ public abstract class menu {
     public menu(String jenis){
         this.jenis = jenis;
     }
-    
-    
     public String getJenis(){
         return jenis;
     }

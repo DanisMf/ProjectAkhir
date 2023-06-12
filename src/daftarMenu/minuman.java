@@ -14,13 +14,23 @@ public class minuman extends menu{
     private int jumlah;
     private int harga;
     
+    //Constructor adalah method khusus yang akan dieksekusi/dipanggil pada saat instansiasi objek menggunakan operator new.
+    //Pada umumnya, constructor berisi inisialisasi instance variable dari objek pada suatu class.
+
     public minuman(String jenis, String nama, int jumlah, int harga){
         super(jenis);
         this.nama = nama;
         this.jumlah = jumlah;
         this.harga = harga;
     }
-    
+    @Override
+    public String getJenis(){
+        return jenis;
+    }
+    @Override
+    public void setJenis(String jenis){
+        this.jenis = jenis;
+    }
     public String getNama(){
         return nama;
     }

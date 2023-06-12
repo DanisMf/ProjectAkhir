@@ -48,7 +48,8 @@ interface campuran{
  */
 public class Dashboard extends javax.swing.JFrame implements campuran, method{
         
-    
+    //variabel global, yaitu variabel yang dideklarasikan diluar method dan didalam kelas
+    //Perubahan nilai variable global berlaku untuk semua method di dalam class.
     public static int baris;
     menu menu;
     makanan makan;
@@ -62,7 +63,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran, method{
     String user = "root";
     String pass = "";
     
-     public static String  kode_transaksi = "";
+    public static String  kode_transaksi = "";
     String cek_id = "";
     
     @Override
@@ -80,7 +81,6 @@ public class Dashboard extends javax.swing.JFrame implements campuran, method{
     
     @Override
     public void kode_barang_otomatis(){
-        
         try{
             connect = DriverManager.getConnection(url, user,pass);
             stm = connect.createStatement();
@@ -1136,7 +1136,7 @@ public class Dashboard extends javax.swing.JFrame implements campuran, method{
         
         
         ////checkout pesanan minuman
-        String jenisb = "DESSERT AND DRINK";
+        String jenisb = "DRINK AND DESSERT";
         if(cb_esCampur.isSelected() && (Integer)sp_esCampur.getValue()>0){
             minum = new minuman(jenisb, cb_esCampur.getText(), (Integer)sp_esCampur.getValue(), (Integer)sp_esCampur.getValue()*10000);
             model.addRow(new Object[]{minum.getNama(), minum.getJumlah(), minum.getHarga()});
