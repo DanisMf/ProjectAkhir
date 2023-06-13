@@ -17,17 +17,38 @@ import javax.swing.JOptionPane;
 
 import user.profil;
 
+/**
+ * Interface method menyediakan kontrak untuk metode-metode terkait fungsi dan koneksi database.
+ * class yang mengimplementasikan interface ini harus mengimplementasikan method yang didefinisikan di dalamnya.
+ * 
+ * <p>Contoh penggunaan:</p>
+ * <pre>{@code
+ * public class MyClass implements method {
+ *     // Implementasikan metode-metode dari interface method di sini
+ * }
+ * }</pre>
+ */
 interface method{
+    /**
+     * method untuk membuat kode barang otomatis yang dapat digunakan oleh beberapa class namun berbeda implementasi nya
+     */
     void kode_barang_otomatis();
+    /**
+     * method untuk koneksi ke database yang digunakan di beberapa class
+     */
     void koneksi();
 }
 
 /**
- *
- * @author ACER
+ * class RegisterPage merupakan class turunan dari class JFrame dan mengimplementasikan interface method.
+ * class ini digunakan untuk halaman registrasi dan memiliki fungsi-fungsi terkait pembuatan ID user otomatis dan koneksi ke database.
+ * 
  */
 public class RegisterPage extends javax.swing.JFrame implements method{
     
+    /**
+     * kumpulan variabel global
+     */
     String url = "jdbc:mysql://localhost/projectfoodorder";
     String user = "root";
     String pass = "";
@@ -35,6 +56,11 @@ public class RegisterPage extends javax.swing.JFrame implements method{
     
     public profil profil;
     
+    /**
+     * override method dari interface method
+     * untuk membuat id user otomatis ketika registrasi akun
+     * dan autogenerate
+     */
     @Override
     public void kode_barang_otomatis(){
         try{
@@ -78,7 +104,8 @@ public class RegisterPage extends javax.swing.JFrame implements method{
     private String sql = "";
     
     /**
-     *
+     *override method dari interface method
+     *untuk koneksi ke database
      */
     
     @Override
@@ -312,8 +339,13 @@ public class RegisterPage extends javax.swing.JFrame implements method{
     }// </editor-fold>//GEN-END:initComponents
 
     private void tombolRegistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolRegistActionPerformed
+        /**
+        * Melakukan proses registrasi user.
+        * 
+        * @throws SQLException jika terjadi kesalahan pada operasi SQL
+        * @throws ClassNotFoundException jika kelas yang diminta tidak ditemukan
+        */
         try {
-            // TODO add your handling code here:
             profil = new profil(id_user, jName.getText(), jUsername.getText(), jPassword.getText(), jPhoneNumber.getText());
             
             String userName = profil.getUsername();
@@ -339,7 +371,9 @@ public class RegisterPage extends javax.swing.JFrame implements method{
                 JOptionPane.showMessageDialog(null,"this username already exist!","Message",JOptionPane.ERROR_MESSAGE);
             }else{
                 this.dispose();
-                //insert data ke database
+                /**
+                 * insert data ke database
+                 */
                 PreparedStatement pStatement = null;
                 sql = "INSERT INTO datauser(id_user, name, username, password, phone_number)" + "VALUES (?,?,?,?,?);";
                 pStatement = connect.prepareStatement(sql);
@@ -367,7 +401,10 @@ public class RegisterPage extends javax.swing.JFrame implements method{
         }
 //        this.dispose();
     }//GEN-LAST:event_tombolRegistActionPerformed
-
+    /**
+     * method ini digunakan untuk
+     * menutup jframe registerpage dan membuka login_page
+     */
     private void tombolSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolSignInActionPerformed
         // TODO add your handling code here:
         this.dispose();

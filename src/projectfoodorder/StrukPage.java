@@ -17,13 +17,14 @@ import static projectfoodorder.Dashboard.txt_totalItem;
 import static projectfoodorder.UserProfile.id_akun_label;
 
 /**
- *
- * @author taufi
+ * class StrukPage merupakan class yang mewakili halaman struk pada antarmuka pengguna.
+ * class ini mengextends kelas javax.swing.JFrame untuk membuat jendela GUI.
  */
 public class StrukPage extends javax.swing.JFrame {
 
     /**
-     * Creates new form StrukPage
+     * constructor untuk membuat objek StrukPage dan menginisialisasi komponen GUI.
+     * method ini juga memanggil method struk_print dari class dashboard untuk mencetak struk.
      */
     public StrukPage() {
         initComponents();
@@ -144,7 +145,10 @@ public class StrukPage extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * button untuk mencetak struk
+     * @param evt 
+     */
     private void btn_cetakStrukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cetakStrukActionPerformed
        
         try {

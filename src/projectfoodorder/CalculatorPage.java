@@ -6,17 +6,31 @@
 package projectfoodorder;
 
 /**
- *
- * @author DELL
+ * class CalculatorPage merupakan class yang mewakili halaman kalkulator pada antarmuka pengguna.
+ * class ini mengextends class javax.swing.JFrame untuk membuat jendela GUI.
  */
 public class CalculatorPage extends javax.swing.JFrame {
-
-    double angkaPertama;
-    double angkaKedua;
-    double result;
     
+    /**
+     * Variabel angkaPertama digunakan untuk menyimpan angka pertama dalam operasi kalkulator.
+     */
+    double angkaPertama;
+    /**
+     * Variabel angkaKedua digunakan untuk menyimpan angka kedua dalam operasi kalkulator.
+     */
+    double angkaKedua;
+    /**
+     * Variabel result digunakan untuk menyimpan hasil dari operasi kalkulator.
+     */
+    double result;
+    /**
+     * Variabel operator digunakan untuk menyimpan operator yang digunakan dalam operasi kalkulator.
+     */
     String operator;
     
+    /**
+     * constructor untuk membuat objek CalculatorPage dan menginisialisasi komponen GUI.
+     */
     public CalculatorPage() {
         initComponents();
     }

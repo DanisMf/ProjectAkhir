@@ -21,7 +21,10 @@ import javax.swing.JOptionPane;
  * @author ACER
  */
 
-
+/**
+ * class UserProfile merupakan class yang mewakili halaman profil pengguna pada antarmuka pengguna.
+ * class ini mengextends class javax.swing.JFrame untuk membuat jendela GUI.
+ */
 public class UserProfile extends javax.swing.JFrame {
     
     String nama_variable;
@@ -34,10 +37,24 @@ public class UserProfile extends javax.swing.JFrame {
     String user = "root";
     String pass = "";
     
+    /**
+     * Variabel userName digunakan untuk menyimpan username pengguna.
+     */
     String userName;
+    /**
+     * Variabel password digunakan untuk menyimpan password pengguna.
+     */
     String password;
+    /**
+     * Variabel cekName digunakan untuk menyimpan nama yang akan dicek.
+     */
     String cekName;
     
+    /**
+     * Method koneksi digunakan untuk melakukan koneksi ke database.
+     * Jika koneksi berhasil, objek connect dan stm akan diinisialisasi.
+     * Jika koneksi gagal, akan ditampilkan pesan "Koneksi Gagal".
+     */
     public void koneksi(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -48,7 +65,9 @@ public class UserProfile extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Koneksi Gagal");
         }
     }
-    
+    /**
+     * constructor untuk membuat objek UserProfile dan menginisialisasi komponen GUI serta melakukan koneksi ke database.
+     */
     public UserProfile() {
         initComponents();
         koneksi();
@@ -415,7 +434,10 @@ public class UserProfile extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * button untuk menutup page ini
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
@@ -427,7 +449,7 @@ public class UserProfile extends javax.swing.JFrame {
         try {
             koneksi();
             connect = DriverManager.getConnection(url, user,pass);
-            String sql = "DELETE FROM datauser WHERE id_user = '"+id_akun_label.getText()+"CASCADE'";
+            String sql = "DELETE FROM datauser WHERE id_user = '"+id_akun_label.getText()+" and username = "+username_label.getText() +"CASCADE'";
             PreparedStatement stat = connect.prepareStatement(sql);
             stat.execute();
             JOptionPane.showMessageDialog(null, "Menghapus data berhasil", "INFORMASI", JOptionPane.INFORMATION_MESSAGE);

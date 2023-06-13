@@ -9,9 +9,16 @@ package projectfoodorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
+
 /**
- *
- * @author DELL
+ * Kelas LoadingPage merupakan kelas turunan dari kelas javax.swing.JFrame.
+ * Kelas ini digunakan untuk halaman loading atau tampilan awal saat aplikasi sedang memuat.
+ * 
+ * <p>Contoh penggunaan:</p>
+ * <pre>{@code
+ * LoadingPage loadingPage = new LoadingPage();
+ * loadingPage.setVisible(true);
+ * }</pre>
  */
 public class LoadingPage extends javax.swing.JFrame {
 Timer timer;
@@ -19,7 +26,9 @@ ActionListener action;
 LoadingPage sp;
 
     /**
-     * Creates new form LoadingPage
+     * Membuat objek baru dari class LoadingPage.
+     * Konstruktor ini menginisialisasi komponen-komponen yang ada pada halaman loading,
+     * menentukan aksi/behaviour yang akan dilakukan oleh timer, dan memulai timer.
      */
     public LoadingPage() {
         initComponents();
@@ -28,6 +37,25 @@ LoadingPage sp;
         timer = new Timer(250, action);
         timer.start();
     }
+    /**
+     * method aksi digunakan untuk menentukan tindakan yang akan dijalankan oleh timer pada halaman loading.
+     * Tindakan ini berupa peningkatan nilai pada komponen progress bar, dan ketika mencapai 100%,
+     * timer dihentikan, halaman registrasi ditampilkan, dan halaman loading ditutup.
+     */
+    private void aksi() {
+        action = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                progress.setValue(progress.getValue() + 3);
+                progress.setStringPainted(true);
+                if(progress.getPercentComplete()>=1.0){
+                    timer.stop();
+                    new RegisterPage().setVisible(true);
+                    dispose();
+                }
+            }
+        };
+    }  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -126,19 +154,5 @@ LoadingPage sp;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar progress;
     // End of variables declaration//GEN-END:variables
-
-    private void aksi() {
-        action = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                progress.setValue(progress.getValue() + 3);
-                progress.setStringPainted(true);
-                if(progress.getPercentComplete()>=1.0){
-                    timer.stop();
-                    new RegisterPage().setVisible(true);
-                    dispose();
-                }
-            }
-        };
-    }   
+ 
 }

@@ -36,25 +36,44 @@ import daftarMenu.makanan;
 import daftarMenu.minuman;
 
 
-
+/**
+ * Interface yang mendefinisikan method yang harus diimplementasikan oleh kelas yang mengimplementasikannya.
+ */
 interface campuran{
     void kembalian();
     void KosongkanForm();
 }
 
 /**
- *
+ * class Dashboard merupakan class yang mewarisi JFrame dan mengimplementasikan interface campuran dan method.
+ * class ini digunakan untuk menampilkan dashboard dalam aplikasi.
+ * 
  * @author DELL
  */
 public class Dashboard extends javax.swing.JFrame implements campuran, method{
         
     //variabel global, yaitu variabel yang dideklarasikan diluar method dan didalam kelas
     //Perubahan nilai variable global berlaku untuk semua method di dalam class.
-    public static int baris;
-    menu menu;
-    makanan makan;
-    minuman minum;
     
+    /**
+     * Variabel yang menyimpan nilai baris.
+     */
+    public static int baris;
+    /**
+     * Objek menu.
+     */
+    menu menu;
+    /**
+     * Objek makanan.
+     */
+    makanan makan;
+    /**
+     * Objek minuman.
+     */
+    minuman minum;
+    /**
+     * Variabel untuk menyimpan waktu mulai.
+     */
     private int waktumulai = 0;
     
     public Connection connect;
@@ -66,6 +85,10 @@ public class Dashboard extends javax.swing.JFrame implements campuran, method{
     public static String  kode_transaksi = "";
     String cek_id = "";
     
+    /**
+     * method untuk melakukan koneksi ke database.
+     * yang meng override dari interface method
+     */
     @Override
     public void koneksi(){
         try{
@@ -78,7 +101,10 @@ public class Dashboard extends javax.swing.JFrame implements campuran, method{
         }
     }
     
-    
+    /**
+     * method untuk membuat kode_transaksi otomatis atau auto generate.
+     * yang meng override dari interface method
+     */
     @Override
     public void kode_barang_otomatis(){
         try{
@@ -107,6 +133,10 @@ public class Dashboard extends javax.swing.JFrame implements campuran, method{
         }
     }
     
+    /**
+     * method untuk menampilkan jam real-time.
+     * dengan menerapkan multi threading
+     */
     private void JamRealTime(){
         new Thread(){
             @Override
@@ -131,7 +161,11 @@ public class Dashboard extends javax.swing.JFrame implements campuran, method{
     }
     
     
-    
+    /**
+    * method dengan  untuk mencetak struk pembelian pada aplikasi Food Order.
+    * Struk akan ditampilkan di area teks dengan nama 'struk'.
+    * struk akan ditampilkan di jframe struk
+    */
     public static void struk_print(){
         
             struk.setText("                                       The Food Order APP \n");
@@ -175,8 +209,11 @@ public class Dashboard extends javax.swing.JFrame implements campuran, method{
             struk.setText(struk.getText() +"                                                     Original"+"\n");
             
  }
-
     
+    /**
+     * method untuk menghitung kembalian
+     * yang meng override dari interface campuran
+     */
     @Override
     public void kembalian(){
         String x = txt_totalHarga.getText();
@@ -186,14 +223,23 @@ public class Dashboard extends javax.swing.JFrame implements campuran, method{
         int total = b - a;
     }
     
-   
+    /**
+    * constructor untuk kelas Dashboard.
+    * menginisialisasi komponen GUI, memulai pembaruan waktu secara real-time,
+    * menghasilkan kode barang secara otomatis, dan mengatur tampilan jendela
+    * ke mode MAXIMIZED_BOTH (layar penuh).
+    */
     public Dashboard() {
         initComponents();
         JamRealTime();
         kode_barang_otomatis();
-//        this.setExtendedState(MAXIMIZED_BOTH);
+        this.setExtendedState(MAXIMIZED_BOTH);
     }
     
+    /**
+     * method untuk membuat form kosong.
+     * yang meng override dari interface campuran
+     */
     @Override
     public void KosongkanForm(){
         DefaultTableModel model = new DefaultTableModel();
@@ -1079,12 +1125,28 @@ public class Dashboard extends javax.swing.JFrame implements campuran, method{
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * method penanganan aksi yang dipanggil saat tombol "Checkout" ditekan.
+     * method ini melakukan beberapa tindakan terkait checkout pesanan, termasuk
+     * menambahkan item makanan dan minuman yang dipilih ke tabel pesanan, menghitung
+     * total item dan total harga, dan mengubah status pesanan menjadi "BELUM DIBAYAR".
+     *
+     * @param evt Objek ActionEvent yang mewakili peristiwa tombol diklik
+     */
     private void btn_checkoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_checkoutActionPerformed
 
         // TODO add your handling code here:
+        // Menambahkan item makanan ke tabel pesanan jika dipilih
+        // dan mengupdate jumlah dan harga total
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         String jenis = "FOOD";
+        
+        /**
+         * Cek apakah makanan dipilih dan memiliki jumlah yang lebih besar dari 0
+         * jika terpenuhi syarat tersebut maka menambahkan item makanan ke tabel pesanan jika dipilih
+         * dan mengupdate jumlah dan harga total
+         */
         if(cb_Paincake.isSelected() && (Integer)sp_Paincake.getValue()>0){
             makan = new makanan(jenis, cb_Paincake.getText(), (Integer)sp_Paincake.getValue(),(Integer)sp_Paincake.getValue()*15000);
             model.addRow(new Object[]{makan.getNama(), makan.getJumlah(), makan.getHarga()});
@@ -1136,6 +1198,11 @@ public class Dashboard extends javax.swing.JFrame implements campuran, method{
         
         
         ////checkout pesanan minuman
+        /**
+         * Cek apakah minuman dipilih dan memiliki jumlah yang lebih besar dari 0
+         * jika terpenuhi syarat tersebut maka menambahkan item makanan ke tabel pesanan jika dipilih
+         * dan mengupdate jumlah dan harga total
+         */
         String jenisb = "DRINK AND DESSERT";
         if(cb_esCampur.isSelected() && (Integer)sp_esCampur.getValue()>0){
             minum = new minuman(jenisb, cb_esCampur.getText(), (Integer)sp_esCampur.getValue(), (Integer)sp_esCampur.getValue()*10000);
@@ -1204,11 +1271,16 @@ public class Dashboard extends javax.swing.JFrame implements campuran, method{
         txt_totalHarga.setText("Rp. "+ total);
         ///
         
+        // Mengubah status pesanan menjadi "BELUM DIBAYAR" dan mengubah warna tombol
         btn_status.setText("BELUM DIBAYAR");
         btn_status.setBackground(Color.red);
         
     }//GEN-LAST:event_btn_checkoutActionPerformed
-
+    
+    /**
+     * button untuk reset tabel pesanan
+     * @param evt 
+     */
     private void btn_resetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resetActionPerformed
         // TODO add your handling code here:
         KosongkanForm();
@@ -1228,11 +1300,17 @@ public class Dashboard extends javax.swing.JFrame implements campuran, method{
         }
         txt_totalHarga.setText("Rp. "+ total);
         ///
+        // Mengubah status pesanan menjadi "STATUS PEMBAYARAN" dan mengubah warna tombol
         txt_inputUang.setText("");
         btn_status.setText("STATUS PEMBAYARAN");
         btn_status.setBackground(Color.blue);
     }//GEN-LAST:event_btn_resetActionPerformed
-
+    
+    /**
+     * button untuk delete baris yang di select di tabel pesanan
+     * dan mengupdate total harga
+     * @param evt 
+     */
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         // TODO add your handling code here:
         int a = jTable1.getSelectedRow();
@@ -1257,7 +1335,12 @@ public class Dashboard extends javax.swing.JFrame implements campuran, method{
         ///
         
     }//GEN-LAST:event_btn_deleteActionPerformed
-
+    
+    /**
+     * button untuk melakukan pembayaran dengan beberapa kondisi
+     * dan ketika pembayaran berhasil maka akan menginput data ke tabel sql
+     * @param evt 
+     */
     private void btn_bayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_bayarActionPerformed
         // TODO add your handling code here:
         double total = 0;
@@ -1334,29 +1417,46 @@ public class Dashboard extends javax.swing.JFrame implements campuran, method{
             }
         }
     }//GEN-LAST:event_btn_bayarActionPerformed
-
+    
+    /**
+     * button untuk melakukan exit 
+     * dengan menutup this jframe dan kembali ke halaman login
+     * @param evt 
+     */
     private void btn_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exitActionPerformed
         // TODO add your handling code here:
         new LoginPage().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_exitActionPerformed
-
+    /**
+     * button untuk membuka user profile
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         new UserProfile().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-    
+    /**
+     * button untuk membuka frame struk
+     * @param evt 
+     */
     private void btn_showStrukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_showStrukActionPerformed
         new StrukPage().setVisible(true);
         txt_inputUang.setText("");
         btn_showStruk.setEnabled(false);
     }//GEN-LAST:event_btn_showStrukActionPerformed
-
+    /**
+     * button untuk membuka fram calculator
+     * @param evt 
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         new CalculatorPage().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    /**
+     * button untuk open instagram food order
+     * @param evt 
+     */
     private void jLabel36MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel36MouseClicked
         // TODO add your handling code here:
         openInstagram();

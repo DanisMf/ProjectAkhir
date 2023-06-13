@@ -26,8 +26,17 @@ import user.profil;
 import user.profil_login;
 
 /**
+ * class LoginPage merupakan kelas turunan dari kelas javax.swing.JFrame.
+ * class ini digunakan untuk halaman login pada aplikasi.
  *
- * @author ACER
+ * <p>Contoh penggunaan:</p>
+ * <pre>{@code
+ * LoginPage loginPage = new LoginPage();
+ * loginPage.setVisible(true);
+ * }</pre>
+ * 
+ * kelas ini tidak meng implements interface method disebabkan pada class ini
+ * tidak menggunakan semua method yang ada di interface tersebut
  */
 public class LoginPage extends javax.swing.JFrame{
     
@@ -39,6 +48,11 @@ public class LoginPage extends javax.swing.JFrame{
     
     profil_login login;
     
+    /**
+     * method koneksi digunakan untuk melakukan koneksi ke database menggunakan JDBC.
+     * Jika koneksi berhasil, objek Connection dan Statement akan diinisialisasi.
+     * Jika koneksi gagal, akan muncul dialog pesan kesalahan.
+     */
     public void koneksi(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -50,7 +64,9 @@ public class LoginPage extends javax.swing.JFrame{
         }
     }
     /**
-     * Creates new form LoginPage
+     * Membuat objek baru dari kelas LoginPage.
+     * constructor ini menginisialisasi komponen-komponen yang ada pada halaman login
+     * dan melakukan koneksi ke database menggunakan metode koneksi().
      */
     public LoginPage() {
         initComponents();
@@ -280,7 +296,13 @@ public class LoginPage extends javax.swing.JFrame{
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * method ini digunakan untuk mengubah tampilan karakter password menjadi terlihat atau tersembunyi.
+     * Jika opsi "Show Password" diaktifkan, karakter password akan ditampilkan.
+     * Jika opsi "Show Password" dinonaktifkan, karakter password akan disembunyikan.
+     *
+     * @param evt Objek ActionEvent yang menyebabkan pemanggilan metode ini.
+     */
     private void jShowPasswrodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jShowPasswrodActionPerformed
         // TODO add your handling code here:
         if (jShowPasswrod.isSelected()) {
@@ -289,7 +311,13 @@ public class LoginPage extends javax.swing.JFrame{
             jPassword.setEchoChar('*');
         }
     }//GEN-LAST:event_jShowPasswrodActionPerformed
-
+    
+    /**
+    * method ini dipanggil saat tombol LOGIN di klik.
+    * ketika semua syarat nya terpenuhi di section else
+    * maka jframe login akan ditutup dan membuka jframe dashboard
+    * @param evt Objek yang berisi informasi tentang acara yang terjadi.
+    */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         if(jUsername.getText().isEmpty() || jPassword.getText().isEmpty()){
@@ -346,6 +374,10 @@ public class LoginPage extends javax.swing.JFrame{
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    /**
+     * method ini digunakan untuk
+     * menutup jframe loginpage dan kembali ke registerpage
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
